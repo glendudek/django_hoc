@@ -7,7 +7,6 @@ __pycache__/
 
 # Distribution / packaging
 .Python
-.env
 env/
 build/
 develop-eggs/
@@ -57,4 +56,5 @@ target/
 venv
 *.pyc
 staticfiles
+.vagrant
 *~
