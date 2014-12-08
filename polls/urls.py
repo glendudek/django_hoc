@@ -3,6 +3,10 @@ from django.conf.urls import url
 from polls import views
 
 urlpatterns = [
+    # ex: /polls/home/
+    url(r'^home$', views.home, name='home'),
+    # ex: /polls/instructions/
+    url(r'^instructions$', views.instructions, name='instructions'),
     # ex: /polls/
     url(r'^$', views.index, name='index'),
     # ex: /polls/5/

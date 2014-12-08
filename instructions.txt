@@ -12,7 +12,11 @@ Definitions
 
   Framework - a software "framework" is a set of software that provides general functionality to implement a specific design pattern, and can be extended by additional user-written code to perform a specific function.
 
-  Django - a Python framework for building web sites using the MVC design pattern. A web site built with Django has one or more is built from one or more applications. Each application has its own Models, Views, and Controllers.*
+  Django - a free open source Python framework for building web sites using the MVC design pattern. A web site built with Django has one or more is built from one or more applications. Each application has its own Models, Views, and Controllers.*
+
+  VirtualBox - a free software application that acts as a virtual computer, that is, it can run a different operating system and applications exactly as if it was a separate computer running inside of a window on your computer.
+
+  Vagrant - a free software application for configuring and managing software development inside a virtual computer such as VirtualBox. Vagrant makes it easier for multiple software developers to get up and running and use the identical environment, including the same operating system and software tools, independent of the individual computers they are using.
 
   Heroku - an Internet "Platform as a Service" provider that will run web sites written in various languages/frameworks, including Python/Django (and many others, such as Ruby on Rails, an MVC framework for the Ruby language). Anyone on the Internet can use their browser to access web sites running at Heroku. Web sites can be created at Heroku for free. If they need to be used by many people or to manage a lot of data, then Heroku charges fees for using additional resources.
 

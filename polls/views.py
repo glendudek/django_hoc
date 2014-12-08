@@ -7,6 +7,12 @@ from polls.models import Choice, Question
 
 # Create your views here.
 
+def home(request):
+    return render(request, 'polls/home.html')
+
+def instructions(request):
+    return render(request, 'polls/instructions.html')
+
 def index(request):
     latest_question_list = Question.objects.filter(
         pub_date__lte=timezone.now()
