@@ -1,34 +1,28 @@
-<h2>Definitions</h2>
+<h1>Instructions</h1>
+
+<h2>Background</h2>
+
+<p>In this exercise you will be using <b>Django</b>, a free, open-source <b>Python</b>-based <b>framework</b> for building web applications. You will be modifying a simple <b>Polls</b> web application that displays questions with multiple choice responses (for example, <i>Which of these movies did you like the most?</i>), and counts and reports the responses.<p>
+
+<p>A <b>software framework</b> is a collection of software libraries and tools that provides general functionality usually using a specific <b>design pattern</b>, and can be extended by additional user-written code to perform a specific function.</p>
+
+<p>A <b>design pattern</b> is a general, reusable software solution to a commonly-occurring problem. For example, a dictionary in Python (also called an associative array in some languages) is a design pattern for storing name/value pairs.</p>
+
+<p>Django uses a popular design pattern for web applications called <b>Model-View-Controller</b>, or <b>MVC</b> for short. MVC divides up the web application into three parts:</p>
 <ul>
-  <li><h3>Design Pattern</h3> - a general, reusable software solution to a commonly-occurring problem. (if you are interested in learning more about design patterns, see: http://en.wikipedia.org/wiki/Software_design_pattern). For example, a dictionary in Python (also called an associative array in some languages) is a design pattern for storing name/value pairs.</li>
-
-  <li><h3>Model-View-Controller (MVC)</h3> - A common design pattern for writing web applications. It divides up the web application into three parts:
+  <li><b>Model</b> - The Model is the data, along with the business rules for how the data behaves/changes. The Model data and its business rules are often implemented using a Class. The Model data is often stored in a <b>Database</b>. In the <b>Polls</b> web application, there are two models:</li><br/>
   <ul>
-    <li><h4>Model</h4> - the data, along with the business rules for how the data behaves/changes. For example, in a web application, one model might be a User. The data associated with each User might be a username (e.g. 'the.doctor@gmail.com'), a first name ('Doctor'), a last name ('Who'), and a password ('BowTiesAreCool'). A business rule that might be implemented for User model might be that a password must contain at least 8 characters. The model data is often stored in a Database. The model data and its business rules are often implemented using a Class.</li>
+    <li><b>Question</b> - The data fields associated with the Question model are the text string that is the question, and the date/time the Question was added.</li><br/>
+    <li><b>Choice</b> - The data fields associated with the Choice model are the Question that this Choice is for, the text string that is the choice, and the number of votes this Choice has received.
+  </ul><br/>
+  <li><b>View</b> - A View is how the data is displayed by the web application. For example, in the <b>Polls</b> application there is a view that lists all of the Questions that are available (the <b>index</b> view), a View that shows you all the Choices for a specific Question that you can vote on (the <b>details</b> view), and a View that shows you the results of the voting on a specific Question (the <b>results</b> view).</li><br/>
 
-    <li><h4>View</h4> - a view is how the data can be displayed or entered in the user interface. For example, a view of the User model might be a web page that shows you the username, first name, and last name for a User, or it could be a web page that asks you to enter a new password for a User.</li>
-
-    <li><h4>Controller</h4> - a controller accepts input and (depending on the input) uses the Models to manipulate data and the Views to display information. For example, a controller can accept a new password from the "change password" web page, and which instructs the User model to update the password data for a specific User, and then display a View displaying a message that the password was updated.</li>
-  </ul>
-
-  <li><h3>Framework</h3> - a software "framework" is a set of software that provides general functionality to implement a specific design pattern, and can be extended by additional user-written code to perform a specific function.</li>
-
-  <li><h3>Django</h3> - a free open source Python framework for building web sites using the MVC design pattern. A web site built with Django has one or more is built from one or more applications. Each application has its own Models, Views, and Controllers.*
-
-  <li><h3>VirtualBox</h3> - a free software application that acts as a virtual computer, that is, it can run a different operating system and applications exactly as if it was a separate computer running inside of a window on your computer.</li>
-
-  <li><h3>Vagrant</h3> - a free software application for configuring and managing software development inside a virtual computer such as VirtualBox. Vagrant makes it easier for multiple software developers to get up and running and use the identical environment, including the same operating system and software tools, independent of the individual computers they are using.</li>
-
-  <li><h3>Heroku</h3> - an Internet "Platform as a Service" provider that will run web sites written in various languages/frameworks, including Python/Django (and many others, such as Ruby on Rails, an MVC framework for the Ruby language). Anyone on the Internet can use their browser to access web sites running at Heroku. Web sites can be created at Heroku for free. If they need to be used by many people or to manage a lot of data, then Heroku charges fees for using additional resources.</li>
-
-  <li><h3>Version Control System (aka Revision Control System)</h3> - a system for tracking changes to files, usually used to manage changes to a set of files containing source code for a software application.</li>
-
-  <li><h3>Git</h3> - a distributed Version Control System tool. It can track changes in files on your local computer, but also symchronize (copy) those changes to remote computers. Git was created by Linus Torvalds, the creator of Linux. We will use Git to copy any changes you make to Heroku.</li>
+  <li><b>Controller</b> - A Controller accepts the input (e.g., a vote for a Choice) and/or actions (e.g., clicking a link to go to a different page) from the user and then uses the Models to manipulate the data and uses the Views to display information. For example, a controller can accept a vote for a Choice from the <b>details</b> view, and which instructs the Choice model to add one to the number of votes, and then displays (or <b>renders</b>) the <b>results</b> view to show the user the votes for this Question.</li><br/>
 </ul>
 
 <h2>The Application</h2>
 
-<p>The Django web site we will be working with has a simple Polls application. You can present questions to users, allow users to select an answer they would like to vote for, and allow users to view the voting results for each question.</p>
+<p>In Django, a web site can be made up of many separate (but usually related) applications. The Django web site we will be working with has a single simple Polls application. You can present questions to users, allow users to select an answer they would like to vote for, and allow users to view the voting results for each question.</p>
 
 <p>The important files and directories for the web site are as follows:</p>
 
@@ -36,32 +30,118 @@
   <li><b>django/</b> - this is the top-level directory for the web site.</li>
   <li><b>django/manage.py</b> - this is the initialization file for django command-line commands</li>
   <br/>
-  <li><b>django/django_hoc</b> - this is the directory that contains the "root" application of the web site (i.e. Django Hour Of Code)</li>
-  <li><b>django/django_hoc/urls.py</b> - this is the file that looks up the URL given to the web site and calls the specified application</li>
+  <li><b>django/django_hoc</b> - this is the directory that contains the "root" application of the web site (Django Hour Of Code)</li>
+  <li><b>django/django_hoc/urls.py</b> - this is the file that looks up the URL sent by the user's web browser to the web site and calls the matching Controller/View for the matching application.</li>
   <br/>
-  <li><b>django/polls</b> - this is the directory that contains the polls application of the web site</li>
-  <li><b>django/polls/urls.py</b> - this is the file that contains the Python data that is used to look up the URL from the web browser and calls the matching Controller/View</li>
-  <li><b>django/polls/models.py</b> - this file contains the Python code for the Models for the polls application</li>
-  <li><b>django/polls/views.py</b> - this file contains the Python code for the Controllers/Views for the polls application.</li>
-  <li><b>django/polls/test.py</b> - this file contains the Python code for the tests for the polls application</li>
-  <li><b>django/polls/templates/polls</b> - this directory contains the HTML templates for the Views</li>
+  <li><b>django/polls</b> - this is the directory that contains the <b>Polls</b> application of the web site</li>
+  <li><b>django/polls/urls.py</b> - this is the file that looks up the URL sent by the user's web browser for the <b>Polls</b> application and calls the matching Controller/View in the <b>Polls</b> application.</li>
+  <li><b>django/polls/models.py</b> - this file contains the Python code for the Models for the <b>Polls</b> application</li>
+  <li><b>django/polls/views.py</b> - this file contains the Python code for the Controllers/Views for the <b>Polls</b> application.</li>
+  <li><b>django/polls/test.py</b> - this file contains the Python code for the tests for the <b>Polls</b> application</li>
+  <li><b>django/polls/templates/polls</b> - this directory contains the <b>HTML</b> templates for the Views</li>
+  <p>
+    * Note that in Django, the Controller is found in the "views.py" file,
+    and much of the code to format the display of the data is found in template
+    files, so Django is sometimes called a "Model", "Template", "View" design
+    pattern.
+  </p>
 </ul>
-
-* Note that in Django, the Controller is found in the "views.py" file, and much of the View is found in template files, so Django is sometimes more correctly called a "Model", "Template", "View" design pattern.
 
 <h2>The Exercise</h2>
 <ul style="list-style-type:decimal;">
-  <li>Run the application on your computer using your web browser.</li>
+  <li>
+    Run the application on your computer using your web browser.
+    <p>
+      We will be running the web site on your computer using <b>VirtualBox</b>,
+      which is a free software program that acts like a completely separate
+      computer running as a program (a <b>virtual</b> computer) on your
+      regular computer. The virtual computer runs a completely different
+      Operating System, in this case, <b>Linux</b>. To use it, you need to
+      connect to the virtual computer using <b>SSH</b> (Secure Shell), which
+      is used to run commands on a remote computer over a network. We will
+      also use another free program called <b>Vagrant</b>, which helps us
+      manage the virtual computer.
+    </p>
+    <p>
+      To start, you should have a command window which is in the <b>django</b>
+      directory. Use the command <i>vagrant ssh</i> to open a connection to
+      the virtual computer running Linux. Then use the command
+      <i>./runserver</i> to start the Django server running on this virtual
+      computer.
+    </p>
+    <p>
+      At this point, you can use your web browser (e.g. Safari or Chrome)
+      on your regular computer to connect to the web server running on your
+      virtual computer. To do this, enter this URL in your web browser
+      address bar: <i>http://localhost:8000</i>. Then click on the link
+      to go to the polling application. Try looking at a couple of Questions
+      and voting on a few Choices to see how it works.
+    </p>
+  </li>
 
-  <li>Run the application at Heroku using your web browser.</li>
+  <li>
+    Run the application at Heroku using your web browser.
+    <p>
+      <b>Heroku</b> is an Internet "Platform as a Service" provider that
+      will run web sites written in various languages/frameworks, including
+      Python/Django (and many others, such as Ruby on Rails, an MVC framework
+      for the Ruby language). Anyone on the Internet can use their browser to
+      access web sites running at Heroku. Web sites can be created at Heroku
+      for free. If they need to be used by many people or to manage a lot of
+      data, then Heroku charges fees for using additional resources.
+    </p>
+    <p>
+      TBD
+    </p>
+  </li>
 
-  <li>Use the "Django Admin" interface to create a new question and choices to vote on. Run this on your local computer and also Heroku.</li>
+  <li>
+    Use the "Django Admin" interface to create a new question and choices
+    to vote on. Run this on your local computer and also Heroku.
+    <p>
+      TBD
+    </p>
+  </li>
 
-  <li>Run the tests. Create tests for the results page.</li>
+  <li>
+    Run the tests. Create tests for the results page.
+    <p>
+      TBD
+    </p>
+  </li>
 
-  <li>Display the number of responses for each question on the index page.</li>
+  <li>
+    Display the number of responses for each question on the index page.
+    <p>
+      TBD
+    </p>
+  </li>
 
-  <li>Deploy your changes from 5 to Heroku using Git.</li>
+  <li>
+    Deploy your changes from 5 to Heroku using Git.
 
-  <li>Add a new page to display all the questions with all of the choices for each question and the number of responses for each choice, in order of how many responses each choice received.</li>
+    <p>
+      <b>Git</b> is a distributed <b>Revision Control System</b> tool.
+      A <b>Revision Control System</b> is a system for tracking changes
+      to files, and is typically used to manage changes to a set of files
+      containing source code for a software application. <b>Git</b> can
+      track changes you make in files on your local computer, and it can
+      also synchronize (copy) those changes to remote computers. Git was
+      created by <b>Linus Torvalds</b>, the creator of Linux. We will use
+      Git to copy any changes you make to Heroku.
+    </p>
+    <p>
+      TBD
+    </p>
+  </li>
+
+  <li>
+    Add a new page to display all the questions with all of the choices for
+    each question and the number of responses for each choice, in order of
+    how many responses each choice received.
+    <p>
+      TBD
+    </p>
+  </li>
 </ul>
+
