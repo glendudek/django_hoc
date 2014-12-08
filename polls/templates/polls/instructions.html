@@ -1,3 +1,5 @@
+<a href="/">Return to Home page</a>
+
 <h1>Instructions</h1>
 
 <h2>Background</h2>
@@ -141,7 +143,7 @@
   </p>
 </ul>
 
-<h2>The Exercise</h2>
+<h2>The Exercises</h2>
 <ul style="list-style-type:decimal;">
   <li>
     Run the application on your computer using your web browser.
@@ -186,15 +188,68 @@
       resources needed for this.
     </p>
     <p>
-      Your application 
+      We have already pre-created the application for you at Heroku,
+      but you need to copy your web site code to Heroku to get it to run
+      the latest code. To do this, we will use another free tool called
+      <b>Git</b>. We'll talk more about Git below, but for now, you just
+      need to use the command <i>git push heroku</i> from within
+      your <i>vagrant ssh</i> session to copy your code
+      to Heroku. Once the code is copied to Heroku, then Heroku will
+      automatically run a sequence of commands to reinitialize and
+      restart your application there.
+    </p>
+    <p>
+      Once the <i>git push heroku</i> command is complete, then you can check
+      your application at Heroku by enter this URL in your web browser
+      address bar: <i>http://django-hoc-##.herokuapp.com</i>, where <b>##</b>
+      is the number that you have been assigned.
+      Then click on the link to go to the polling application.
+      Notice that the votes you made in exercise 1 are <b>not</b>
+      in your application at Heroku - this is because the application at
+      Heroku is using a different database than the one on your local computer.
+      Any changes you make to your local database will not be seen by Heroku.
+      Any changes you make to your code on your local computer will not be
+      seen by Heroku until you push your new code to Heroku.
     </p>
   </li>
 
   <li>
-    Use the "Django Admin" interface to create a new question and choices
-    to vote on. Run this on your local computer and also Heroku.
+    Use the <b>Django Admin</b> interface to create a new question and choices
+    to vote on. Run this on your local computer, but you can also run it
+    at Heroku if you want.
     <p>
-      TBD
+      Django comes with a built-in administrative interface you can use to
+      explore the model data that is saved in your database, and to create,
+      read, update, or delete your model data (these actions are known by
+      the acronym <b>CRUD</b>).
+    </p>
+    <p>
+      Let's use this admin interface to create a new Question with some Choices.
+      Think of a new question you might want to ask. Use the link in the home
+      page of your application (at <i>http://localhost:8000</i>), and click
+      on the link to go to the admin interface. You should see a login screen
+      asking for a Username and Password. Use <i>admin</i> as the Username
+      and <i>fred</i> as the password. You should now see a page with
+      the title <b>Django administration</b> and subtitle
+      <b>Site administration</b>.
+    </p>
+    <p>
+      Click on the <b>Add</b> link to the right of <b>Questions</b> to add your
+      new Question. You should go to a new page with the subtitle
+      <b>Add question</b>. Fill in the <b>Question text</b> field, and also
+      the <b>Choice text</b> fields for as many choices as you like. If you
+      want to add more than 3 choices, click the <b>Add another Choice</b>
+      control. Once you are done filling in these fields, click the
+      <b>Save</b> button.
+    </p>
+    <p>
+      Now go back to the home page at <i>http://localhost:8000</i>, and click
+      on the link to go to the Polls application to see your new question.
+      Click on the new question and look at the choices to be sure they look
+      right. If you made a typo, you can fix it by going back to the admin
+      interface, clicking on the <b>Questions</b> control, and selecting
+      which question you would like to modify, modify the Question text
+      or Choice text, and then click <b>Save</b>.
     </p>
   </li>
 
@@ -240,3 +295,4 @@
   </li>
 </ul>
 
+<a href="/">Return to Home page</a>
