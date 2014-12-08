@@ -1,0 +1,67 @@
+<h2>Definitions</h2>
+<ul>
+  <li><h3>Design Pattern</h3> - a general, reusable software solution to a commonly-occurring problem. (if you are interested in learning more about design patterns, see: http://en.wikipedia.org/wiki/Software_design_pattern). For example, a dictionary in Python (also called an associative array in some languages) is a design pattern for storing name/value pairs.</li>
+
+  <li><h3>Model-View-Controller (MVC)</h3> - A common design pattern for writing web applications. It divides up the web application into three parts:
+  <ul>
+    <li><h4>Model</h4> - the data, along with the business rules for how the data behaves/changes. For example, in a web application, one model might be a User. The data associated with each User might be a username (e.g. 'the.doctor@gmail.com'), a first name ('Doctor'), a last name ('Who'), and a password ('BowTiesAreCool'). A business rule that might be implemented for User model might be that a password must contain at least 8 characters. The model data is often stored in a Database. The model data and its business rules are often implemented using a Class.</li>
+
+    <li><h4>View</h4> - a view is how the data can be displayed or entered in the user interface. For example, a view of the User model might be a web page that shows you the username, first name, and last name for a User, or it could be a web page that asks you to enter a new password for a User.</li>
+
+    <li><h4>Controller</h4> - a controller accepts input and (depending on the input) uses the Models to manipulate data and the Views to display information. For example, a controller can accept a new password from the "change password" web page, and which instructs the User model to update the password data for a specific User, and then display a View displaying a message that the password was updated.</li>
+  </ul>
+
+  <li><h3>Framework</h3> - a software "framework" is a set of software that provides general functionality to implement a specific design pattern, and can be extended by additional user-written code to perform a specific function.</li>
+
+  <li><h3>Django</h3> - a free open source Python framework for building web sites using the MVC design pattern. A web site built with Django has one or more is built from one or more applications. Each application has its own Models, Views, and Controllers.*
+
+  <li><h3>VirtualBox</h3> - a free software application that acts as a virtual computer, that is, it can run a different operating system and applications exactly as if it was a separate computer running inside of a window on your computer.</li>
+
+  <li><h3>Vagrant</h3> - a free software application for configuring and managing software development inside a virtual computer such as VirtualBox. Vagrant makes it easier for multiple software developers to get up and running and use the identical environment, including the same operating system and software tools, independent of the individual computers they are using.</li>
+
+  <li><h3>Heroku</h3> - an Internet "Platform as a Service" provider that will run web sites written in various languages/frameworks, including Python/Django (and many others, such as Ruby on Rails, an MVC framework for the Ruby language). Anyone on the Internet can use their browser to access web sites running at Heroku. Web sites can be created at Heroku for free. If they need to be used by many people or to manage a lot of data, then Heroku charges fees for using additional resources.</li>
+
+  <li><h3>Version Control System (aka Revision Control System)</h3> - a system for tracking changes to files, usually used to manage changes to a set of files containing source code for a software application.</li>
+
+  <li><h3>Git</h3> - a distributed Version Control System tool. It can track changes in files on your local computer, but also symchronize (copy) those changes to remote computers. Git was created by Linus Torvalds, the creator of Linux. We will use Git to copy any changes you make to Heroku.</li>
+</ul>
+
+<h2>The Application</h2>
+
+<p>The Django web site we will be working with has a simple Polls application. You can present questions to users, allow users to select an answer they would like to vote for, and allow users to view the voting results for each question.</p>
+
+<p>The important files and directories for the web site are as follows:</p>
+
+<ul>
+  <li><b>django/</b> - this is the top-level directory for the web site.</li>
+  <li><b>django/manage.py</b> - this is the initialization file for django command-line commands</li>
+  <br/>
+  <li><b>django/django_hoc</b> - this is the directory that contains the "root" application of the web site (i.e. Django Hour Of Code)</li>
+  <li><b>django/django_hoc/urls.py</b> - this is the file that looks up the URL given to the web site and calls the specified application</li>
+  <br/>
+  <li><b>django/polls</b> - this is the directory that contains the polls application of the web site</li>
+  <li><b>django/polls/urls.py</b> - this is the file that contains the Python data that is used to look up the URL from the web browser and calls the matching Controller/View</li>
+  <li><b>django/polls/models.py</b> - this file contains the Python code for the Models for the polls application</li>
+  <li><b>django/polls/views.py</b> - this file contains the Python code for the Controllers/Views for the polls application.</li>
+  <li><b>django/polls/test.py</b> - this file contains the Python code for the tests for the polls application</li>
+  <li><b>django/polls/templates/polls</b> - this directory contains the HTML templates for the Views</li>
+</ul>
+
+* Note that in Django, the Controller is found in the "views.py" file, and much of the View is found in template files, so Django is sometimes more correctly called a "Model", "Template", "View" design pattern.
+
+<h2>The Exercise</h2>
+<ul style="list-style-type:decimal;">
+  <li>Run the application on your computer using your web browser.</li>
+
+  <li>Run the application at Heroku using your web browser.</li>
+
+  <li>Use the "Django Admin" interface to create a new question and choices to vote on. Run this on your local computer and also Heroku.</li>
+
+  <li>Run the tests. Create tests for the results page.</li>
+
+  <li>Display the number of responses for each question on the index page.</li>
+
+  <li>Deploy your changes from 5 to Heroku using Git.</li>
+
+  <li>Add a new page to display all the questions with all of the choices for each question and the number of responses for each choice, in order of how many responses each choice received.</li>
+</ul>
