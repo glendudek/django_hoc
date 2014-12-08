@@ -2,43 +2,137 @@
 
 <h2>Background</h2>
 
-<p>In this exercise you will be using <b>Django</b>, a free, open-source <b>Python</b>-based <b>framework</b> for building web applications. You will be modifying a simple <b>Polls</b> web application that displays questions with multiple choice responses (for example, <i>Which of these movies did you like the most?</i>), and counts and reports the responses.<p>
+<p>
+  In this exercise you will be using <b>Django</b>, a free, open-source
+  <b>Python</b>-based <b>framework</b> for building web applications.
+</p>
+<p>
+  A <b>framework</b> is a collection of software libraries and tools that
+  provides general functionality usually using a specific
+  <b>design pattern</b>, and that can be extended by additional user-written
+  code to perform a specific function.
+</p>
+<p>
+  A <b>design pattern</b> is a general, reusable software solution to a
+  commonly-occurring problem. For example, a dictionary in Python (also
+  called an associative array in some languages) is a design pattern for
+  storing name/value pairs.
+</p>
+<p>
+  You will be modifying a simple <b>Polls</b> web application that displays
+  questions with multiple choice responses (for example,
+  <i>Which of these movies did you like the most?</i>), and counts and
+  reports the responses.
+</p>
 
-<p>A <b>software framework</b> is a collection of software libraries and tools that provides general functionality usually using a specific <b>design pattern</b>, and can be extended by additional user-written code to perform a specific function.</p>
 
-<p>A <b>design pattern</b> is a general, reusable software solution to a commonly-occurring problem. For example, a dictionary in Python (also called an associative array in some languages) is a design pattern for storing name/value pairs.</p>
-
-<p>Django uses a popular design pattern for web applications called <b>Model-View-Controller</b>, or <b>MVC</b> for short. MVC divides up the web application into three parts:</p>
+<p>
+  Django uses a popular design pattern for web applications called
+ <b>Model-View-Controller</b>, or <b>MVC</b> for short. MVC divides
+ up the web application into three parts:
+</p>
 <ul>
-  <li><b>Model</b> - The Model is the data, along with the business rules for how the data behaves/changes. The Model data and its business rules are often implemented using a Class. The Model data is often stored in a <b>Database</b>. In the <b>Polls</b> web application, there are two models:</li><br/>
+  <li>
+    <b>Model</b> - The Model is the data, along with the business rules
+    for how the data behaves/changes. The Model data and its business rules
+    are often implemented using a Class. The Model data is often stored in
+    a <b>Database</b>. In the <b>Polls</b> web application, there are two
+    models:
+  </li>
+  <br/>
   <ul>
-    <li><b>Question</b> - The data fields associated with the Question model are the text string that is the question, and the date/time the Question was added.</li><br/>
-    <li><b>Choice</b> - The data fields associated with the Choice model are the Question that this Choice is for, the text string that is the choice, and the number of votes this Choice has received.
-  </ul><br/>
-  <li><b>View</b> - A View is how the data is displayed by the web application. For example, in the <b>Polls</b> application there is a view that lists all of the Questions that are available (the <b>index</b> view), a View that shows you all the Choices for a specific Question that you can vote on (the <b>details</b> view), and a View that shows you the results of the voting on a specific Question (the <b>results</b> view).</li><br/>
-
-  <li><b>Controller</b> - A Controller accepts the input (e.g., a vote for a Choice) and/or actions (e.g., clicking a link to go to a different page) from the user and then uses the Models to manipulate the data and uses the Views to display information. For example, a controller can accept a vote for a Choice from the <b>details</b> view, and which instructs the Choice model to add one to the number of votes, and then displays (or <b>renders</b>) the <b>results</b> view to show the user the votes for this Question.</li><br/>
+    <li>
+      <b>Question</b> - The data fields associated with the Question model
+      are the text string that is the question, and the date/time the Question
+      was added.
+    </li>
+    <br/>
+    <li>
+      <b>Choice</b> - The data fields associated with the Choice model are
+      the Question that this Choice is for, the text string that is the choice,
+      and the number of votes this Choice has received.
+    </li>
+  </ul>
+  <br/>
+  <li>
+    <b>View</b> - A View is how the data is displayed by the web application.
+    For example, in the <b>Polls</b> application there is a view that lists
+    all of the Questions that are available (the <b>index</b> view), a View
+    that shows you all the Choices for a specific Question that you can vote
+    on (the <b>details</b> view), and a View that shows you the results of
+    the voting on a specific Question (the <b>results</b> view).
+  </li>
+  <br/>
+  <li>
+    <b>Controller</b> - A Controller accepts the input (e.g., a vote for
+    a Choice) and/or actions (e.g., clicking a link to go to a different page)
+    from the user and then uses the Models to manipulate the data and uses the
+    Views to display information. For example, a controller can accept a vote
+    for a Choice from the <b>details</b> view, and which instructs the Choice
+    model to add one to the number of votes, and then displays (or
+    <b>renders</b>) the <b>results</b> view to show the user the votes
+    for this Question.
+  </li>
+  <br/>
 </ul>
 
 <h2>The Application</h2>
 
-<p>In Django, a web site can be made up of many separate (but usually related) applications. The Django web site we will be working with has a single simple Polls application. You can present questions to users, allow users to select an answer they would like to vote for, and allow users to view the voting results for each question.</p>
+<p>
+  In Django, a web site can be made up of many separate (but usually related)
+  applications. The Django web site we will be working with has a single
+  simple Polls application. You can present questions to users, allow users
+  to select an answer they would like to vote for, and allow users to view
+  the voting results for each question.
+</p>
 
-<p>The important files and directories for the web site are as follows:</p>
+<p>
+  Here are descriptions of the files that comprise this application, but you
+  don't need to understand them all in detail. In each of the exercises, we'll
+  let you know which files you need to worry about.
+</p>
 
 <ul>
-  <li><b>django/</b> - this is the top-level directory for the web site.</li>
-  <li><b>django/manage.py</b> - this is the initialization file for django command-line commands</li>
+  <li>
+    <b>django/</b> - this is the top-level directory for the web site.
+  </li>
+  <li>
+    <b>django/manage.py</b> - this is the initialization file for django command-line commands
+  </li>
   <br/>
-  <li><b>django/django_hoc</b> - this is the directory that contains the "root" application of the web site (Django Hour Of Code)</li>
-  <li><b>django/django_hoc/urls.py</b> - this is the file that looks up the URL sent by the user's web browser to the web site and calls the matching Controller/View for the matching application.</li>
+  <li>
+    <b>django/django_hoc</b> - this is the directory that contains the
+    "root" application of the web site (Django Hour Of Code)
+  </li>
+  <li>
+    <b>django/django_hoc/urls.py</b> - this is the file that looks up the
+    URL sent by the user's web browser to the web site and calls the matching Controller/View for the matching application.
+  </li>
   <br/>
-  <li><b>django/polls</b> - this is the directory that contains the <b>Polls</b> application of the web site</li>
-  <li><b>django/polls/urls.py</b> - this is the file that looks up the URL sent by the user's web browser for the <b>Polls</b> application and calls the matching Controller/View in the <b>Polls</b> application.</li>
-  <li><b>django/polls/models.py</b> - this file contains the Python code for the Models for the <b>Polls</b> application</li>
-  <li><b>django/polls/views.py</b> - this file contains the Python code for the Controllers/Views for the <b>Polls</b> application.</li>
-  <li><b>django/polls/test.py</b> - this file contains the Python code for the tests for the <b>Polls</b> application</li>
-  <li><b>django/polls/templates/polls</b> - this directory contains the <b>HTML</b> templates for the Views</li>
+  <li><b>django/polls</b> - this is the directory that contains
+    the <b>Polls</b> application of the web site
+  </li>
+  <li>
+    <b>django/polls/urls.py</b> - this is the file that looks up the URL
+    sent by the user's web browser for the <b>Polls</b> application and
+    calls the matching Controller/View in the <b>Polls</b> application.
+  </li>
+  <li>
+    <b>django/polls/models.py</b> - this file contains the Python code
+    for the Models for the <b>Polls</b> application
+  </li>
+  <li>
+    <b>django/polls/views.py</b> - this file contains the Python code for
+    the Controllers/Views for the <b>Polls</b> application.
+  </li>
+  <li>
+    <b>django/polls/test.py</b> - this file contains the Python code for
+    the tests for the <b>Polls</b> application
+  </li>
+  <li>
+    <b>django/polls/templates/polls</b> - this directory contains the
+    <b>HTML</b> templates for the Views
+  </li>
   <p>
     * Note that in Django, the Controller is found in the "views.py" file,
     and much of the code to format the display of the data is found in template
@@ -83,15 +177,16 @@
     Run the application at Heroku using your web browser.
     <p>
       <b>Heroku</b> is an Internet "Platform as a Service" provider that
-      will run web sites written in various languages/frameworks, including
+      runs web sites written in various languages/frameworks, including
       Python/Django (and many others, such as Ruby on Rails, an MVC framework
       for the Ruby language). Anyone on the Internet can use their browser to
       access web sites running at Heroku. Web sites can be created at Heroku
-      for free. If they need to be used by many people or to manage a lot of
-      data, then Heroku charges fees for using additional resources.
+      for free. If the web sites need to be used by many people or to
+      manage a lot of data, then Heroku charges fees for the additional
+      resources needed for this.
     </p>
     <p>
-      TBD
+      Your application 
     </p>
   </li>
 
