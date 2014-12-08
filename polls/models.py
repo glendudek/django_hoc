@@ -24,3 +24,7 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
     def __str__(self):
         return self.choice_text
+
+    def vote_for(self):
+        self.votes += 1
+        self.save()
