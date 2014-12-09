@@ -345,16 +345,33 @@
       <b>django/polls/templates/polls/index.html</b> to add the total number
       of responses next to each question. The template file is a mixture of
       HTML tags which are typically surrounded by <b>&lt; &gt;</b>, which you
-      may have seen before, and some other stuff surround by <b>&#123;% %&#125;</b> or
-      <b>&#123;&#123; &#125;&#125;</b>, which you probably haven't seen before. These are Django
-      tags, and they contain something that looks a lot like Python code.
-      Some of these Django tags are even embedded <i>inside</i> HTML tags!
+      may have seen before. HTML is the format that your browser understands,
+      and tells the browser what information to put where on the page,
+      including text, links, buttons, input fields, etc.
+    </p>
+    <p>
+      You'll also see some other stuff surround by <b>&#123;% %&#125;</b> or
+      <b>&#123;&#123; &#125;&#125;</b>, which you probably haven't
+      seen before.  These are Django tags, and they contain something
+      that looks a lot like Python code.  Some of these Django tags
+      are even embedded <i>inside</i> HTML tags!  Django uses these
+      tags to <b>pre-process</b> the template before it is sent to the
+      browser, and convert it to plain HTML for the browser.  These
+      Django tags allow you to generate HTML using the data and
+      control control logic in Python/Django.
+    </p>
+    <p>
       The simplest Django tags just take a Python value that is inside
-      <b>&#123;&#123; &#125;&#125;</b> and turn it into text that is displayed on the web page.
+      <b>&#123;&#123; &#125;&#125;</b> and turn it into text that is
+      displayed on the web page.
       For example, in the index.html file you will see this:
-      <b>&#123;&#123; question.question_text &#125;&#125;</b>. This just takes the question_text
+      <b>&#123;&#123; question.question_text &#125;&#125;</b>.
+      This just takes the question_text
       field from the given <b>question</b> object and displays it on the
-      web page. See if you can add the current count of votes next to each
+      web page.
+    </p>
+    <p>
+      See if you can add the current count of votes next to each
       question on this web page. Once you make your changes to the source
       code files, you can just try them using your browser to go to
       <i>http://localhost:8000</i> again.
@@ -425,9 +442,10 @@
   </li>
 
   <li>
-    Add a new page to display all the questions with all of the choices for
-    each question and the number of responses for each choice, in order of
-    how many responses each choice received.
+    Add a new page (the <b>allresults</b> page) to display all the
+    questions with all of the choices for each question and the number
+    of responses for each choice, in order of how many responses each
+    choice received.
     <p>
       Ok, this will need to touch a number of files. The basic steps are:
       <ul style="list-style-type:decimal;">
@@ -437,21 +455,34 @@
           Choices for a question object sorted by the number of responses.
         </li>
         <li>
-          Add a new method in the <b>django/polls/views.py</b> file
-          to render the all results page.
+          Add a new allresults method in
+          the <b>django/polls/views.py</b> file to render the
+          allresults page.
         </li>
         <li>
-          Add a new view template in the <b>django/polls/templates/polls</b>
-          directory to display the questions and choices.
+          Add a new allresults view template in
+          the <b>django/polls/templates/polls</b> directory to display
+          the questions and choices.
         </li>
         <li>
-          Add a new url to <b>django/polls/urls.py</b> to invoke the
-          new view method.
+          Add a new <b>urlpattern</b> (see below)
+          to <b>django/polls/urls.py</b> to invoke the new allresults
+          view method.
         </li>
         <li>
-          Add a link to the new url to one of the existing pages.
+          Add a link to the new url to one of the existing HTML templates.
         </li>
       </ul>
+    </p>
+    <p>
+      Django uses a list of <b>urlpatterns</b> in
+      the <b>django/polls/urls.py</b> file to recognize a URL and
+      determine what view method to call, and what information from
+      the URL should be passed as an argument to the view method. The
+      urlpattern contains a <b>regular expression</b> that it compares
+      to the URL to see if it matches. You will need to add a new entry
+      to the urlpatterns list to match the new URL you want to use (see the
+      <b>url(...)</b> function below).
     </p>
     <p>
       Here are some functions you might need to implement this exercise:
@@ -476,9 +507,10 @@
           <b>django/polls/templates/polls/index.html</b> for an example.
         </li>
         <li>
-          <b>url(r'expr', view_method, name='view_name')</b> -
-          returns a urlpattern to match a url using the regular expression
-          specified by <b>expr</b> and call the view method specified by
+          <b>url(r'expr', view_method, name='view_name')</b> - a
+          function that returns a urlpattern to match a url using the
+          regular expression specified by <b>expr</b> and call the
+          view method specified by
           <b>view_method</b> and referenced by the name <b>view_name</b>.
           See <b>django/polls/urls.py</b> for examples.
         </li>
