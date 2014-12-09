@@ -355,19 +355,23 @@
       <b>&#123;&#123; question.question_text &#125;&#125;</b>. This just takes the question_text
       field from the given <b>question</b> object and displays it on the
       web page. See if you can add the current count of votes next to each
-      question on this web page.
+      question on this web page. Once you make your changes to the source
+      code files, you can just try them using your browser to go to
+      <i>http://localhost:8000</i> again.
     </p>
   </li>
 
   <li>
     Deploy your changes from Exercise 5 to Heroku using Git.
     <p>
-      Ok, now you have modified your application, congratulations! Let's
-      copy those changes to Heroku. You might be tempted just to try
+      Ok, now you have modified your application, congratulations!
+      Let's copy those changes to Heroku so the rest of the world can
+      use them. You might be tempted just to try
       <b>git push heroku</b> again, but if you do, it won't actually copy
       your changes to Heroku yet. Before we can understand why, let's talk
       a bit more about <b>Git</b>.
     </p>
+    <p>
       <b>Git</b> is a distributed <b>Revision Control System</b> tool.
       A <b>Revision Control System</b> is a system for tracking
       changes to files, and is typically used to manage changes to a
@@ -381,7 +385,21 @@
       computers.
     </p>
     <p>
-      TBD
+      Before you can copy your changes to Heroku, you need to have Git
+      <b>commit</b> your changes into your local Git <b>repository</b>.
+      You can think of a Git repository like a database for your source
+      code. Git tracks <i>all</i> of the changes in each of your source
+      files that have been committed, so that if you ever want to see what
+      you have changed, you can use Git to do so. In fact, let's ask Git
+      to show us the changes you have made, but not committed yet. To do this
+      just use the command <b>git status</b> in your <b>vagrant ssh</b> session
+      to look at the list of files you have modified. You can use the
+      command <b>git diff</b> to see the differences in those files. To commit
+      your changes to your Git repository, use the command <b>git add polls</b>
+      and then <b>git commit -m "Added number of responses to index view."</b>.
+      This will commit your changes to the Git repository with a message
+      that tells other developers what you did. Now you can use
+      <b>git push heroku</b> to copy these changes to Heroku.
     </p>
   </li>
 
