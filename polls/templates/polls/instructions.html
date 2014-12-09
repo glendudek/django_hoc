@@ -1,10 +1,11 @@
 <a href="/">Return to Home page</a>
 
 <h1>Instructions</h1>
-<P>
-If you hover over any of the words in <font color = "red">red</font>, an
-explanation of the term will popup.
-</P>
+<p>
+  If you hover over any of the words in
+  <span title="Red is a color."><font color = "red">red</font></span>,
+  an explanation of the term will popup.
+</p>
 <h2>Background</h2>
 
 <p>
@@ -38,7 +39,7 @@ about Django and use it for designing and writing your own web applications.
     <b>Model</b> - The Model encapsulates the data and the rules that
     define how the data behaves/changes.
     The Model data and its rules
-    are often implemented using a <span title = "A way of defining objects that your programs use. Classes typically contain the data elements that describe an object and the function, called <b>methods</b> that act on data data">
+    are often implemented using a <span title="A way of defining objects that your programs use. Classes typically contain the data elements that describe an object and functions, called methods, that act on data">
     <font color = "red">Class</font></span>.
     The Model data is often stored in a <b>Database</b>.
     In our application, there are two models, each implemented by a class:
@@ -74,7 +75,7 @@ about Django and use it for designing and writing your own web applications.
   <li>
     <b>Controller</b> - The controller is what makes everything happen.
     It takes input, such as a vote, and actions, such as clicking on a link
-    to go to a different page), uses the Models to manipulate the data,
+    to go to a different page, uses the Models to manipulate the data,
     and uses the Views to display information.
     For example, a controller can accept a vote
     for a Choice from the <b>details</b> view, instruct the Choice
@@ -93,7 +94,7 @@ When you use Django to develop a web site, you can build as many applications
 as you want -- typically you select a set of related applications for a
 particular web site.
 Today, you'll be working with a rather simple web site that supports a
-single application, Polls. Polls presents questions, allow users
+single application, Polls. Polls presents questions, allows users
 to vote for answers, and then allows users to view the voting results for
 each question.
 </p>
@@ -146,8 +147,8 @@ each question.
     <b>HTML</b> templates for the Views
   </li>
   <p>
-    * Note that in Django, the file "views.py" contains the Controller and
-    and most of the code that dscribes what the application looks like is
+    * Note that in Django, the file "views.py" contains the Controller
+    and most of the code that describes what the application looks like is
     located in template files. For this reason, some people claim that
     Django uses the "Model", "Template", "View" design pattern.
   </p>
