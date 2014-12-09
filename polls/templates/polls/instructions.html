@@ -128,7 +128,7 @@
     the Controllers/Views for the <b>Polls</b> application.
   </li>
   <li>
-    <b>django/polls/test.py</b> - this file contains the Python code for
+    <b>django/polls/tests.py</b> - this file contains the Python code for
     the tests for the <b>Polls</b> application
   </li>
   <li>
@@ -225,8 +225,9 @@
     </p>
     <p>
       Let's use this admin interface to create a new Question with some Choices.
-      Think of a new question you might want to ask. Use the link in the home
-      page of your application (at <i>http://localhost:8000</i>), and click
+      Think of a new question you might want to ask. In your browser, use the
+      link in the home page of your application (at
+      <i>http://localhost:8000</i>), and click
       on the link to go to the admin interface. You should see a login screen
       asking for a Username and Password. Use <i>admin</i> as the Username
       and <i>fred</i> as the password. You should now see a page with
@@ -254,9 +255,67 @@
   </li>
 
   <li>
-    Run the tests. Create tests for the results page.
+    Create an automated test for the results page.
     <p>
-      TBD
+      It can be hard to write software without errors, so it is very important
+      to create tests to ensure your software does what you want it to do.
+      Django comes with a built-in automated test facility. You can run the
+      existing automated tests for the Polls application by running the
+      command <i>python manage.py test polls</i> from your <i>vagrant ssh</i>
+      session. Go ahead and try this now.
+    </p>
+    <p>
+      One of the things you may have noticed when you ran the tests is that
+      Python reported that it was <i>Creating test database...</i>. Django uses
+      a completely separate test database for testing so it doesn't modify
+      your regular application database while running tests. You can
+      create test questions in your tests and vote on choices without worrying
+      about affecting your regular database.
+    </p>
+    <p>
+      Using a text editor on your computer (such as <b>TextEdit</b>,
+      open the file <b>django/polls/tests.py</b> The tests for the
+      Polls application are in this file. Each set of tests are
+      implemented as classes, and each method in each class is an
+      individual test case. You are going to create a new test for
+      the <b>results</b> page, the page that you see after you vote
+      for a Choice. Your test should:
+    </p>
+    <ul style="list-style-type:decimal;">
+      <li>Create a question with two or more choices.</li>
+      <li>Verify that the results page for your new Question contains the correct vote count for all of the Choices.</li>
+    </ul>
+    <p>
+      Here are some helper functions that may be useful:
+      <ul>
+        <li>
+          <b>create_question(keyword_arguments)</b> - this function
+          will create and return a new Question. You can see how it is
+          used in other tests in <b>django/polls/tests.py</b>.
+        </li>
+        <li>
+          <b>question.choice_set.create(keyword_arguments)</b> - this function
+          will create and return a new Choice for the given <b>question</b>
+          object.
+        </li>
+        <li>
+          <b>self.client.get(url)</b> - this call when used in a test
+          method will return a response object corresponding to the
+          web page contents for the given <b>url</b>.
+        </li>
+        <li>
+          <b>reverse('polls:results', args=(question.id,))</b> - this will
+          return the URL for the <b>results</b> view in the <b>polls</b>
+          application for the given <b>question</b> object.
+        </li>
+        <li>
+          <b>self.assertContains(response, string, status_code=200)</b> -
+          this will check to see if the web page in the <b>response</b>
+          object contains the given <b>string</b> and that the web server
+          returned a status code of <b>200</b> (200 is the HTTP status
+          code for success).
+        </li>
+      </ul>
     </p>
   </li>
 
