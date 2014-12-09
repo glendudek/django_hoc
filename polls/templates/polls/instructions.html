@@ -322,22 +322,63 @@
   <li>
     Display the number of responses for each question on the index page.
     <p>
-      TBD
+      Ok, now let's make some changes to a Model and to a View. Right now,
+      the <b>index</b> view (the first page in the Polls application) just
+      shows a list of questions. I'd like you to modify it to show the total
+      number of responses received for each question. First, add a method to
+      the Question class in <b>django/polls/models.py</b> to return the total
+      number of responses received for the question. Some helper functions
+      that might be useful are:
+      <ul>
+        <li>
+          <b>question.choice_set.all</b> - returns a list of Choice objects
+          for the given <b>question</b> object.
+        </li>
+        <li>
+          <b>choice.votes</b> - returns the current vote count for the given
+          <b>choice</b> object.
+        </li>
+      </ul>
+    </p>
+    <p>
+      Next, let's modify the index template file
+      <b>django/polls/templates/polls/index.html</b> to add the total number
+      of responses next to each question. The template file is a mixture of
+      HTML tags which are typically surrounded by <b>&lt; &gt;</b>, which you
+      may have seen before, and some other stuff surround by <b>&#123;% %&#125;</b> or
+      <b>&#123;&#123; &#125;&#125;</b>, which you probably haven't seen before. These are Django
+      tags, and they contain something that looks a lot like Python code.
+      Some of these Django tags are even embedded <i>inside</i> HTML tags!
+      The simplest Django tags just take a Python value that is inside
+      <b>&#123;&#123; &#125;&#125;</b> and turn it into text that is displayed on the web page.
+      For example, in the index.html file you will see this:
+      <b>&#123;&#123; question.question_text &#125;&#125;</b>. This just takes the question_text
+      field from the given <b>question</b> object and displays it on the
+      web page. See if you can add the current count of votes next to each
+      question on this web page.
     </p>
   </li>
 
   <li>
-    Deploy your changes from 5 to Heroku using Git.
-
+    Deploy your changes from Exercise 5 to Heroku using Git.
     <p>
+      Ok, now you have modified your application, congratulations! Let's
+      copy those changes to Heroku. You might be tempted just to try
+      <b>git push heroku</b> again, but if you do, it won't actually copy
+      your changes to Heroku yet. Before we can understand why, let's talk
+      a bit more about <b>Git</b>.
+    </p>
       <b>Git</b> is a distributed <b>Revision Control System</b> tool.
-      A <b>Revision Control System</b> is a system for tracking changes
-      to files, and is typically used to manage changes to a set of files
-      containing source code for a software application. <b>Git</b> can
-      track changes you make in files on your local computer, and it can
-      also synchronize (copy) those changes to remote computers. Git was
-      created by <b>Linus Torvalds</b>, the creator of Linux. We will use
-      Git to copy any changes you make to Heroku.
+      A <b>Revision Control System</b> is a system for tracking
+      changes to files, and is typically used to manage changes to a
+      set of files containing source code for a software
+      application. Git was created by <b>Linus Torvalds</b>, the
+      creator of the Linux kernel, to help him work together with other
+      developers to improve Linux. <b>Git</b> can keep track of changes
+      you make in files on your local computer, and because it was
+      designed to allow teams all across the world to work with each
+      other, it can also synchronize (copy) those changes to remote
+      computers.
     </p>
     <p>
       TBD
