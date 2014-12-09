@@ -366,15 +366,15 @@
     <p>
       Ok, now you have modified your application, congratulations!
       Let's copy those changes to Heroku so the rest of the world can
-      use them. You might be tempted just to try
+      use them. You might be tempted just to use
       <b>git push heroku</b> again, but if you do, it won't actually copy
       your changes to Heroku yet. Before we can understand why, let's talk
       a bit more about <b>Git</b>.
     </p>
     <p>
-      <b>Git</b> is a distributed <b>Revision Control System</b> tool.
-      A <b>Revision Control System</b> is a system for tracking
-      changes to files, and is typically used to manage changes to a
+      <b>Git</b> is a distributed <b>Revision Control System</b>.
+      A <b>Revision Control System</b> is a system for keeping a record
+      of changes to files, and is typically used to manage changes to a
       set of files containing source code for a software
       application. Git was created by <b>Linus Torvalds</b>, the
       creator of the Linux kernel, to help him work together with other
@@ -386,20 +386,41 @@
     </p>
     <p>
       Before you can copy your changes to Heroku, you need to have Git
-      <b>commit</b> your changes into your local Git <b>repository</b>.
-      You can think of a Git repository like a database for your source
-      code. Git tracks <i>all</i> of the changes in each of your source
-      files that have been committed, so that if you ever want to see what
-      you have changed, you can use Git to do so. In fact, let's ask Git
-      to show us the changes you have made, but not committed yet. To do this
-      just use the command <b>git status</b> in your <b>vagrant ssh</b> session
-      to look at the list of files you have modified. You can use the
-      command <b>git diff</b> to see the differences in those files. To commit
-      your changes to your Git repository, use the command <b>git add polls</b>
-      and then <b>git commit -m "Added number of responses to index view."</b>.
-      This will commit your changes to the Git repository with a message
-      that tells other developers what you did. Now you can use
-      <b>git push heroku</b> to copy these changes to Heroku.
+      <b>commit</b> your changes into your local
+      Git <b>repository</b>. You can think of a Git repository like a
+      database for your source code. Git tracks <i>all</i> of the
+      changes in each of your source files that have been committed to
+      the repository, so that if you ever want to see what you have
+      changed, you can use Git to do so. <b>git push heroku</b> will only
+      copy changes that have been saved in the Git repository,
+      which is why it won't work yet.
+    </p>
+    <p>
+      Let's ask Git to show us the changes you have made, but not
+      committed yet. To do this you can use the command <b>git
+      status</b> in your <b>vagrant ssh</b> session to look at the
+      list of files you have modified. Git compares your files to what
+      is in the repository, and tells you which ones have
+      changed. You can use the command <b>git diff</b> to see the
+      exact changes in those files. To commit your changes to your Git
+      repository, use the command <b>git add polls</b> and then <b>git
+      commit -m "Added number of responses to index view."</b>.  This
+      will commit your changes to the Git repository with a message
+      that tells other developers what you did. Now (finally) you can
+      use <b>git push heroku</b> to copy these changes to Heroku.
+    </p>
+    <p>
+      Once you have pushed your changes to Heroku, use your browser to
+      check your application at <i>http://django-hoc-##.herokuapp.com</i>
+      to see your changes in action (and don't forget to replace <b>##</b>
+      with the number you have been assigned!)
+    </p>
+    <p>
+      One more thing about Git: there is a web site called <b>GitHub</b>
+      that developers all over the world use to share source code using
+      Git. The source code for the django_hoc web application is stored
+      on <b>GitHub</b>. <b>GitHub</b> is free for projects that are shared
+      with everyone.
     </p>
   </li>
 
