@@ -14,6 +14,7 @@ def instructions(request):
     return render(request, 'polls/instructions.html')
 
 def index(request):
+    Question.init_questions()
     latest_question_list = Question.objects.filter(
         pub_date__lte=timezone.now()
     ).order_by('-pub_date')[:5]
