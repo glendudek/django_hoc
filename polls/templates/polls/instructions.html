@@ -429,8 +429,72 @@
     each question and the number of responses for each choice, in order of
     how many responses each choice received.
     <p>
-      TBD
+      Ok, this will need to touch a number of files. The basic steps are:
+      <ul style="list-style-type:decimal;">
+        <li>
+          Add a new method to the Question class in
+          <b>django/polls/models.py</b> to return the list of
+          Choices for a question object sorted by the number of responses.
+        </li>
+        <li>
+          Add a new method in the <b>django/polls/views.py</b> file
+          to render the all results page.
+        </li>
+        <li>
+          Add a new view template in the <b>django/polls/templates/polls</b>
+          directory to display the questions and choices.
+        </li>
+        <li>
+          Add a new url to <b>django/polls/urls.py</b> to invoke the
+          new view method.
+        </li>
+        <li>
+          Add a link to the new url to one of the existing pages.
+        </li>
+      </ul>
     </p>
+    <p>
+      Here are some functions you might need to implement this exercise:
+      <ul>
+        <li>
+          <b>.order_by('-votes')</b> - when appended to an expression that
+          returns a list of Choice objects, this will sort the returned list
+          by the number of votes in descending order.
+        </li>
+        <li>
+          <b>render(request, template, &#123;'variable_name': variable_value&#125;)</b> -
+          render the specified <b>template</b> on behalf of the specified
+          view <b>request</b> with the variable named <b>variable_name</b> and
+          value <b>variable_value</b>. See the view methods in
+          <b>django/polls/views.py</b> for examples.
+        </li>
+        <li>
+          <b>&#123;% for var in list %&#125; ... &#123;% endfor %&#125;</b> -
+          a Django template tag that loops over each entry in
+          <b>list</b> assigning the entry to <b>var</b>. The loop is
+          terminated by <b>&#123;% endfor %&#125;</b>. See
+          <b>django/polls/templates/polls/index.html</b> for an example.
+        </li>
+        <li>
+          <b>url(r'expr', view_method, name='view_name')</b> -
+          returns a urlpattern to match a url using the regular expression
+          specified by <b>expr</b> and call the view method specified by
+          <b>view_method</b> and referenced by the name <b>view_name</b>.
+          See <b>django/polls/urls.py</b> for examples.
+        </li>
+        <li>
+          <b>&lt;a href="url"&gt;link name&lt;/a&gt;</b> - this is the HTML tag for
+          creating a link to the specified <b>url</b> while displaying the
+          specified <b>link name</b> in the web page. See
+          <b>django/polls/templates/polls/index.html</b> for an example.
+        </li>
+        <li>
+          <b>&#123;% url 'application:view_name' %&#125;</b> - a Django template
+          tag that returns the url to the specified <b>application</b> and
+          <b>view_name</b>. See <b>django/polls/templates/polls/home.html</b>
+          for examples.
+        </li>
+      </ul>
   </li>
 </ul>
 
