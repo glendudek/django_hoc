@@ -1,9 +1,33 @@
+<head>
+  <style>
+    span.info {
+      position:relative; 
+      color:red;
+      font-weight:bold;
+    } 
+
+    span.info span.tooltip {display: none} 
+
+    span.info:hover span.tooltip {
+      display:block;
+      position:absolute;
+      top:2em; left:-4em; min-width:12em;
+      padding: 0.5em;
+      border:1px solid;
+      background-color:#fff8dc;
+      color:black;
+      font-weight:normal;
+      z-index:200;
+    } 
+  </style>
+</head>
+
 <a href="/">Return to Home page</a>
 
 <h1>Instructions</h1>
 <p>
   If you hover over any of the words in
-  <span title="Red is a color."><font color = "red">red</font></span>,
+  <span class="info">red<span class="tooltip"><b>Red</b> is a color.</span></span>,
   an explanation of the term will popup.
 </p>
 <h2>Background</h2>
@@ -11,8 +35,13 @@
 <p>
   In this exercise you will be using <b>Django</b>, a free, open-source
   <b>Python</b>-based
-  <span title="a collection of software libraries and tools that provides useful functionality that you can extend by writing code to perform specific functions.">
-  <font color = "red">framework</font>
+  <span class="info">
+    framework
+    <span class="tooltip">
+      A <b>framework</b> is a collection of software libraries and
+      tools that provides useful functionality that you can extend by
+      writing code to perform specific functions.
+    </span>
   </span>
   for building web applications.
 </p>
@@ -27,8 +56,13 @@ about Django and use it for designing and writing your own web applications.
 
 <p>
   Django uses a popular
-  <span title = "a general, reusable software solution to a commonly-occurring problem. For example, a dictionary in Python (also called an associative array in some languages) is a design pattern for storing name/value pairs.">
-  <font color = "red">design pattern</font>
+  <span class="info">design pattern
+    <span class="tooltip">
+      A <b>design pattern</b> is a general, reusable software solution
+      to a commonly-occurring problem. For example, a dictionary in
+      Python (also called an associative array in some languages) is a
+      design pattern for storing name/value pairs.
+    </span>
   </span>
   for web applications called
  <b>Model-View-Controller</b>, or <b>MVC</b> for short. MVC divides
@@ -39,8 +73,13 @@ about Django and use it for designing and writing your own web applications.
     <b>Model</b> - The Model encapsulates the data and the rules that
     define how the data behaves/changes.
     The Model data and its rules
-    are often implemented using a <span title="A way of defining objects that your programs use. Classes typically contain the data elements that describe an object and functions, called methods, that act on data">
-    <font color = "red">Class</font></span>.
+    are often implemented using a
+    <span class="info">
+      Class<span class="tooltip">
+        A way of defining objects that your programs use. Classes typically
+        contain the data elements that describe an object and functions,
+        called methods, that act on the data.
+      </span></span>.
     The Model data is often stored in a <b>Database</b>.
     In our application, there are two models, each implemented by a class:
   </li>
@@ -159,27 +198,33 @@ each question.
   <li>
     Run the application on your computer using your web browser.
     <p>
-      We will be running the web site on your computer using <b>VirtualBox</b>,
-      which is a free software program that acts like a completely separate
-      computer running as a program (a <b>virtual</b> computer) on your
-      regular computer. The virtual computer runs a completely different
-      Operating System, in this case, <b>Linux</b>. To use it, you need to
-      connect to the virtual computer using <b>SSH</b> (Secure Shell), which
-      is used to run commands on a remote computer over a network. We will
-      also use another free program called <b>Vagrant</b>, which helps us
-      manage the virtual computer.
+      We will be running the web site on your computer using
+      <span class="info">VirtualBox<span class="tooltip">
+          <b>VirtualBox</b> is a free software program that acts like
+          a completely separate computer running as a program (a
+          <b>virtual computer</b>) on your regular computer. The virtual
+          computer runs a completely different Operating System, in
+          this case, Linux.
+      </span></span>.
+      To use it, you need to
+      connect to VirtualBox using
+      <span class="info">SSH<span class="tooltip">
+          <b>SSH</b> (Secure Shell) is used to run commands on a
+          remote computer over a network.
+      </span></span>.
+      We will also use another free program called <b>Vagrant</b>,
+      which helps us manage VirtualBox.
     </p>
     <p>
       To start, you should have a command window which is in the <b>django</b>
       directory. Use the command <i>vagrant ssh</i> to open a connection to
-      the virtual computer running Linux. Then use the command
-      <i>./runserver</i> to start the Django server running on this virtual
-      computer.
+      VirtualBox. Then use the command
+      <i>./runserver</i> to start the Django server running on VirtualBox.
     </p>
     <p>
       At this point, you can use your web browser (e.g. Safari or Chrome)
-      on your regular computer to connect to the web server running on your
-      virtual computer. To do this, enter this URL in your web browser
+      on your regular computer to connect to the web server running on
+      VirtualBox. To do this, enter this URL in your web browser
       address bar: <i>http://localhost:8000</i>. Then click on the link
       to go to the polling application. Try looking at a couple of Questions
       and voting on a few Choices to see how it works.
@@ -187,17 +232,21 @@ each question.
   </li>
 
   <li>
-    Run the application at Heroku using your web browser.
-    <p>
-      <b>Heroku</b> is an Internet "Platform as a Service" provider that
-      runs web sites written in various languages/frameworks, including
-      Python/Django (and many others, such as Ruby on Rails, an MVC framework
-      for the Ruby language). Anyone on the Internet can use their browser to
-      access web sites running at Heroku. Web sites can be created at Heroku
-      for free. If the web sites need to be used by many people or to
-      manage a lot of data, then Heroku charges fees for the additional
-      resources needed for this.
-    </p>
+    Run the application at
+    <span class="info">Heroku
+      <span class="tooltip">
+        <b>Heroku</b> is an Internet Platform as a Service (PaaS)
+        provider that runs web sites written in various
+        languages/frameworks, including Python/Django (and many
+        others, such as Ruby on Rails, an MVC framework for the Ruby
+        language). Anyone on the Internet can use their browser to
+        access web sites running at Heroku. Web sites can be created
+        at Heroku for free. If the web sites need to be used by many
+        people or to manage a lot of data, then Heroku charges fees
+        for the additional resources needed for this.
+      </span>
+    </span>
+    using your web browser.
     <p>
       We have already pre-created the application for you at Heroku,
       but you need to copy your web site code to Heroku to get it to run
@@ -397,25 +446,29 @@ each question.
       use them. You might be tempted just to use
       <b>git push heroku</b> again, but if you do, it won't actually copy
       your changes to Heroku yet. Before we can understand why, let's talk
-      a bit more about <b>Git</b>.
-    </p>
-    <p>
-      <b>Git</b> is a distributed <b>Revision Control System</b>.
-      A <b>Revision Control System</b> is a system for keeping a record
-      of changes to files, and is typically used to manage changes to a
-      set of files containing source code for a software
-      application. Git was created by <b>Linus Torvalds</b>, the
-      creator of the Linux kernel, to help him work together with other
-      developers to improve Linux. <b>Git</b> can keep track of changes
-      you make in files on your local computer, and because it was
-      designed to allow teams all across the world to work with each
-      other, it can also synchronize (copy) those changes to remote
-      computers.
+      a bit more about <span class="info">Git<span class="tooltip">
+          <b>Git</b> is a distributed <b>Revision Control System</b>.
+          A <b>Revision Control System</b> is a system for keeping a record
+          of changes to files, and is typically used to manage changes to a
+          set of files containing source code for a software
+          application. Git was created by <b>Linus Torvalds</b>, the
+          creator of the Linux kernel, to help him work together with other
+          developers to improve Linux. Git can keep track of changes
+          you make in files on your local computer, and because it was
+          designed to allow teams all across the world to work with each
+          other, it can also synchronize (copy) those changes to remote
+          computers.
+      </span></span> (and <span class="info">GitHub<span class="tooltip">
+          <b>GitHub</b> is a website that developers all over the
+          world use to share source code using Git. The source code for
+          the django_hoc web application is stored on GitHub. GitHub is
+          free for projects that are shared with everyone.
+      </span></span>).
     </p>
     <p>
       Before you can copy your changes to Heroku, you need to have Git
-      <b>commit</b> your changes into your local
-      Git <b>repository</b>. You can think of a Git repository like a
+      commit your changes into your local
+      <b>Git repository</b>. You can think of a Git repository like a
       database for your source code. Git tracks <i>all</i> of the
       changes in each of your source files that have been committed to
       the repository, so that if you ever want to see what you have
@@ -442,13 +495,6 @@ each question.
       check your application at <i>http://django-hoc-##.herokuapp.com</i>
       to see your changes in action (and don't forget to replace <b>##</b>
       with the number you have been assigned!)
-    </p>
-    <p>
-      One more thing about Git: there is a web site called <b>GitHub</b>
-      that developers all over the world use to share source code using
-      Git. The source code for the django_hoc web application is stored
-      on <b>GitHub</b>. <b>GitHub</b> is free for projects that are shared
-      with everyone.
     </p>
   </li>
 
