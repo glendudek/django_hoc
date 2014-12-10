@@ -129,6 +129,10 @@ about Django and use it for designing and writing your own web applications.
 <h2>The Application</h2>
 
 <p>
+  If you are using your own computer, click
+  <a href="{% url 'polls:install' %}">here</a> for installation instructions.
+</p>
+<p>
 When you use Django to develop a web site, you can build as many applications
 as you want -- typically you select a set of related applications for a
 particular web site.
@@ -194,7 +198,7 @@ each question.
 </ul>
 
 <h2>The Exercises</h2>
-<ul style="list-style-type:decimal;">
+<ol>
   <li>
     Run the application on your computer using your web browser.
     <p>
@@ -252,14 +256,14 @@ each question.
       but you need to copy your web site code to Heroku to get it to run
       the latest code. To do this, we will use another free tool called
       <b>Git</b>. We'll talk more about Git below, but for now, you just
-      need to use the command <i>git push heroku</i> from within
+      need to use the command <i>git push heroku master</i> from within
       your <i>vagrant ssh</i> session to copy your code
       to Heroku. Once the code is copied to Heroku, then Heroku will
       automatically run a sequence of commands to reinitialize and
       restart your application there.
     </p>
     <p>
-      Once the <i>git push heroku</i> command is complete, then you can check
+      Once the <i>git push heroku master</i> command is complete, then you can check
       your application at Heroku by enter this URL in your web browser
       address bar: <i>http://django-hoc-##.herokuapp.com</i>, where <b>##</b>
       is the number that you have been assigned.
@@ -341,10 +345,10 @@ each question.
       the <b>results</b> page, the page that you see after you vote
       for a Choice. Your test should:
     </p>
-    <ul style="list-style-type:decimal;">
+    <ol>
       <li>Create a question with two or more choices.</li>
       <li>Verify that the results page for your new Question contains the correct vote count for all of the Choices.</li>
-    </ul>
+    </ol>
     <p>
       Here are some helper functions that may be useful:
       <ul>
@@ -444,7 +448,7 @@ each question.
       Ok, now you have modified your application, congratulations!
       Let's copy those changes to Heroku so the rest of the world can
       use them. You might be tempted just to use
-      <b>git push heroku</b> again, but if you do, it won't actually copy
+      <i>git push heroku master</i> again, but if you do, it won't actually copy
       your changes to Heroku yet. Before we can understand why, let's talk
       a bit more about <span class="info">Git<span class="tooltip">
           <b>Git</b> is a distributed <b>Revision Control System</b>.
@@ -472,23 +476,23 @@ each question.
       database for your source code. Git tracks <i>all</i> of the
       changes in each of your source files that have been committed to
       the repository, so that if you ever want to see what you have
-      changed, you can use Git to do so. <b>git push heroku</b> will only
+      changed, you can use Git to do so. <i>git push heroku master</i> will only
       copy changes that have been saved in the Git repository,
       which is why it won't work yet.
     </p>
     <p>
       Let's ask Git to show us the changes you have made, but not
-      committed yet. To do this you can use the command <b>git
-      status</b> in your <b>vagrant ssh</b> session to look at the
+      committed yet. To do this you can use the command <i>git
+      status</i> in your <i>vagrant ssh</i> session to look at the
       list of files you have modified. Git compares your files to what
       is in the repository, and tells you which ones have
-      changed. You can use the command <b>git diff</b> to see the
+      changed. You can use the command <i>git diff</i> to see the
       exact changes in those files. To commit your changes to your Git
-      repository, use the command <b>git add polls</b> and then <b>git
-      commit -m "Added number of responses to index view."</b>.  This
+      repository, use the command <i>git add polls</i> and then <i>git
+      commit -m "Added number of responses to index view."</i>.  This
       will commit your changes to the Git repository with a message
       that tells other developers what you did. Now (finally) you can
-      use <b>git push heroku</b> to copy these changes to Heroku.
+      use <i>git push heroku master</i> to copy these changes to Heroku.
     </p>
     <p>
       Once you have pushed your changes to Heroku, use your browser to
@@ -505,7 +509,7 @@ each question.
     choice received.
     <p>
       Ok, this will need to touch a number of files. The basic steps are:
-      <ul style="list-style-type:decimal;">
+      <ol>
         <li>
           Add a new method to the Question class in
           <b>django/polls/models.py</b> to return the list of
@@ -529,7 +533,7 @@ each question.
         <li>
           Add a link to the new url to one of the existing HTML templates.
         </li>
-      </ul>
+      </ol>
     </p>
     <p>
       Django uses a list of <b>urlpatterns</b> in
@@ -585,6 +589,6 @@ each question.
         </li>
       </ul>
   </li>
-</ul>
+</ol>
 
 <a href="/">Return to Home page</a>

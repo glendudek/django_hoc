@@ -7,6 +7,8 @@ urlpatterns = [
     url(r'^home$', views.home, name='home'),
     # ex: /polls/instructions/
     url(r'^instructions$', views.instructions, name='instructions'),
+    # ex: /polls/install/
+    url(r'^install$', views.install, name='install'),
     # ex: /polls/
     url(r'^$', views.index, name='index'),
     # ex: /polls/5/

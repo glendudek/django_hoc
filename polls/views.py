@@ -13,6 +13,9 @@ def home(request):
 def instructions(request):
     return render(request, 'polls/instructions.html')
 
+def install(request):
+    return render(request, 'polls/install.html')
+
 def index(request):
     Question.init_questions()
     latest_question_list = Question.objects.filter(
