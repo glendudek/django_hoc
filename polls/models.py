@@ -39,6 +39,15 @@ class Question(models.Model):
             question1.choice_set.create(choice_text=choice_text, votes=0)
         return True
 
+    def choices_by_vote_count(self):
+        return self.choice_set.order_by('-votes')
+
+    def response_count(self):
+        sum = 0
+        for choice in self.choice_set.all():
+            sum += choice.votes
+        return sum
+
 class Choice(models.Model):
     question = models.ForeignKey(Question)
     choice_text = models.CharField(max_length=200)

@@ -31,6 +31,12 @@ def results(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})
 
+def allresults(request):
+    question_list = Question.objects.filter(
+        pub_date__lte=timezone.now()
+    ).order_by('-pub_date')
+    return render(request, 'polls/allresults.html', {'question_list': question_list})
+
 def vote(request, question_id):
     p = get_object_or_404(Question, pk=question_id)
     try:

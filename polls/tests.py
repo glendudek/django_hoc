@@ -127,3 +127,21 @@ class QuestionIndexDetailTests(TestCase):
                                    args=(past_question.id,)))
         self.assertContains(response, past_question.question_text,
                             status_code=200)
+
+class QuestionResultTests(TestCase):
+    def test_results_view_with_no_votes(self):
+        question_1_text = 'Question 1'
+        question_1 = create_question(question_text=question_1_text, days=-1)
+        choice_1_text = 'Choice 1'
+        choice1 = question_1.choice_set.create(choice_text=choice_1_text, votes=0)
+        choice_2_text = 'Choice 2'
+        choice2 = question_1.choice_set.create(choice_text=choice_2_text, votes=0)
+        response = self.client.get(reverse('polls:results', args=(question_1.id,)))
+        self.assertContains(response, question_1.question_text, status_code=200)
+        self.assertContains(response, choice1.choice_text + ' -- ' + str(choice1.votes))
+        self.assertContains(response, choice2.choice_text + ' -- ' + str(choice2.votes))
+        choice2.vote_for()
+        response = self.client.get(reverse('polls:results', args=(question_1.id,)))
+        self.assertContains(response, question_1.question_text, status_code=200)
+        self.assertContains(response, choice1.choice_text + ' -- ' + str(choice1.votes))
+        self.assertContains(response, choice2.choice_text + ' -- ' + str(choice2.votes))
