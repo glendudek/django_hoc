@@ -327,12 +327,12 @@ each question.
       shows a list of questions. I'd like you to modify it to show the total
       number of responses received for each question. Using a text editor on
       your computer (such as <b>TextEdit</b>), open the file <b>django/polls/models.py</b>.
-      First, add a method to the Question class to return the total
-      number of responses received for the question. Some helper functions
-      that might be useful are:
+      First, add a method called votes(self) to the Question class to return
+      the total number of responses received for the question. Some helper
+      functions that might be useful are:
       <ul>
         <li>
-          <b>question.choice_set.all</b> - returns a list of Choice objects
+          <b>question.choice_set.all()</b> - returns a list of Choice objects
           for the given <b>question</b> object.
         </li>
         <li>
@@ -369,7 +369,12 @@ each question.
       <b>&#123;&#123; question.question_text &#125;&#125;</b>.
       This just takes the question_text
       field from the given <b>question</b> object and displays it on the
-      web page.
+      web page. You can also use a Django tag to call a class method and
+      display the return value on the web page, but only if the class method
+      does not take any arguments (other than self), like this:
+      <b>&#123;&#123; question.foo &#125;&#125;</b>. This will call
+      the <b>foo</b> method, as if you had typed <b>question.foo()</b>
+      in regular Python code.
     </p>
     <p>
       See if you can add the current count of votes next to each
