@@ -4,15 +4,28 @@
 <h1>Installation Instructions</h1>
 
 <ol>
-  <li>Install VirtualBox. You can download it here: <a href="https://www.virtualbox.org/wiki/Downloads">VirtualBox Download Page</a></li>
+  <li>Install VirtualBox 4.3. You can download it here: <a href="https://www.virtualbox.org/wiki/Download_Old_Builds_4_3">VirtualBox 4.3 Download Page</a></li>
   <li>Install Vagrant. You can download it here: <a href="https://www.vagrantup.com/downloads.html">Vagrant Download Page</a></li>
   <li>Download the vagrant box django_hoc.box from here (warning: it is over 500MB!): <a href="https://www.dropbox.com/s/6kcoaadnz3s45zs/django_hoc.box?dl=0">django_hoc.box</a></li>
   <li>Import the vagrant box for django_hoc into vagrant: <i>vagrant box add django_hoc ./django_hoc.box</i></li>
   <li>Clone the github repository into a new directory called <b>django</b>: <i>git clone https://github.com/glendudek/django_hoc.git django</i></li>
   <li>Add the heroku app remote (you should be assigned a unique two-digit number to put in place of ##, or use 99 for one that may shared*): <i>cd django; git remote add heroku git@heroku.com:django-hoc-##.git</i></li>
+  <li>Ensure TextEdit is in Plain text mode: open TextEdit, go to the TextEdit menu and select preferences, click New Document, under Format select "Plain text"</li>
 
  <br/>*If you are using a shared heroku app like django-hoc-99, you may need to use the --force flag on git push to overwrite someone else's changes, e.g. <i>git push --force heroku master</i>
 </ol>
 
+<h2>Reinitializing a computer for a new student</h2>
+
+<ol>
+  <li>From a terminal window, change to the django directory.</li>
+  <li>Shutdown and restart vagrant: <i>vagrant halt; vagrant up</i>
+  <li>SSH into the vagrant instance: <i>vagrant ssh</i>
+  <li>Restore the original code: <i>git fetch; git reset --hard origin/master</i></li>
+  <li>Push the initial code to heroku: <i>git push --force heroku origin/init:master</i></li>
+  <li>(if you have the heroku command) Restore the database from backup: <i>heroku pg:backups restore -a django-hoc-## --confirm django-hoc-## django-hoc::b004 DATABASE_URL</i>
+</ol>
+
+<ol>
 <a href="/">Return to Home page</a>&nbsp;&nbsp;
 <a href="{% url 'polls:instructions' %}">Return to Instructions</a>

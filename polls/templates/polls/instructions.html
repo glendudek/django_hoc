@@ -44,8 +44,8 @@
     framework
     <span class="tooltip">
       A <b>framework</b> is a collection of software libraries and
-      tools that provides useful functionality that you can extend by
-      writing code to perform specific functions.
+      tools to build applications that you can customize and extend by
+      writing your own code.
     </span>
   </span>
   for building web applications.
@@ -222,8 +222,8 @@ each question.
     </p>
     <p>
       To start, you should have a command window which is in the <b>django</b>
-      directory. Use the command <i>vagrant ssh</i> to open a connection to
-      VirtualBox. Then use the command
+      directory. Type the command <i>vagrant ssh</i> to open a connection to
+      VirtualBox. Then type the command
       <i>./runserver</i> to start the Django server running on VirtualBox.
     </p>
     <p>
@@ -320,83 +320,19 @@ each question.
   </li>
 
   <li>
-    Create an automated test for the results page.
-    <p>
-      It can be hard to write software without errors, so it is very important
-      to create tests to ensure your software does what you want it to do.
-      Django comes with a built-in automated test facility. You can run the
-      existing automated tests for the Polls application by running the
-      command <i>python manage.py test polls</i> from your <i>vagrant ssh</i>
-      session. Go ahead and try this now.
-    </p>
-    <p>
-      One of the things you may have noticed when you ran the tests is that
-      Python reported that it was <i>Creating test database...</i>. Django uses
-      a completely separate test database for testing so it doesn't modify
-      your regular application database while running tests. You can
-      create test questions in your tests and vote on choices without worrying
-      about affecting your regular database.
-    </p>
-    <p>
-      Using a text editor on your computer (such as <b>TextEdit</b>,
-      open the file <b>django/polls/tests.py</b> The tests for the
-      Polls application are in this file. Each set of tests are
-      implemented as classes, and each method in each class is an
-      individual test case. You are going to create a new test for
-      the <b>results</b> page, the page that you see after you vote
-      for a Choice. Your test should:
-    </p>
-    <ol>
-      <li>Create a question with two or more choices.</li>
-      <li>Verify that the results page for your new Question contains the correct vote count for all of the Choices.</li>
-    </ol>
-    <p>
-      Here are some helper functions that may be useful:
-      <ul>
-        <li>
-          <b>create_question(keyword_arguments)</b> - this function
-          will create and return a new Question. You can see how it is
-          used in other tests in <b>django/polls/tests.py</b>.
-        </li>
-        <li>
-          <b>question.choice_set.create(keyword_arguments)</b> - this function
-          will create and return a new Choice for the given <b>question</b>
-          object.
-        </li>
-        <li>
-          <b>self.client.get(url)</b> - this call when used in a test
-          method will return a response object corresponding to the
-          web page contents for the given <b>url</b>.
-        </li>
-        <li>
-          <b>reverse('polls:results', args=(question.id,))</b> - this will
-          return the URL for the <b>results</b> view in the <b>polls</b>
-          application for the given <b>question</b> object.
-        </li>
-        <li>
-          <b>self.assertContains(response, string, status_code=200)</b> -
-          this will check to see if the web page in the <b>response</b>
-          object contains the given <b>string</b> and that the web server
-          returned a status code of <b>200</b> (200 is the HTTP status
-          code for success).
-        </li>
-      </ul>
-    </p>
-  </li>
-
-  <li>
     Display the number of responses for each question on the index page.
     <p>
       Ok, now let's make some changes to a Model and to a View. Right now,
       the <b>index</b> view (the first page in the Polls application) just
       shows a list of questions. I'd like you to modify it to show the total
-      number of responses received for each question. First, add a method to
-      the Question class in <b>django/polls/models.py</b> to return the total
-      number of responses received for the question. Some helper functions
-      that might be useful are:
+      number of responses received for each question. Using a text editor on
+      your computer (such as <b>TextEdit</b>), open the file <b>django/polls/models.py</b>.
+      First, add a method called votes(self) to the Question class to return
+      the total number of responses received for the question. Some helper
+      functions that might be useful are:
       <ul>
         <li>
-          <b>question.choice_set.all</b> - returns a list of Choice objects
+          <b>question.choice_set.all()</b> - returns a list of Choice objects
           for the given <b>question</b> object.
         </li>
         <li>
@@ -433,7 +369,12 @@ each question.
       <b>&#123;&#123; question.question_text &#125;&#125;</b>.
       This just takes the question_text
       field from the given <b>question</b> object and displays it on the
-      web page.
+      web page. You can also use a Django tag to call a class method and
+      display the return value on the web page, but only if the class method
+      does not take any arguments (other than self), like this:
+      <b>&#123;&#123; question.foo &#125;&#125;</b>. This will call
+      the <b>foo</b> method, as if you had typed <b>question.foo()</b>
+      in regular Python code.
     </p>
     <p>
       See if you can add the current count of votes next to each
@@ -500,6 +441,71 @@ each question.
       check your application at <i>http://django-hoc-##.herokuapp.com</i>
       to see your changes in action (and don't forget to replace <b>##</b>
       with the number you have been assigned!)
+    </p>
+  </li>
+
+  <li>
+    Create an automated test for the results page.
+    <p>
+      It can be hard to write software without errors, so it is very important
+      to create tests to ensure your software does what you want it to do.
+      Django comes with a built-in automated test facility. You can run the
+      existing automated tests for the Polls application by running the
+      command <i>python manage.py test polls</i> from your <i>vagrant ssh</i>
+      session. Go ahead and try this now.
+    </p>
+    <p>
+      One of the things you may have noticed when you ran the tests is that
+      Python reported that it was <i>Creating test database...</i>. Django uses
+      a completely separate test database for testing so it doesn't modify
+      your regular application database while running tests. You can
+      create test questions in your tests and vote on choices without worrying
+      about affecting your regular database.
+    </p>
+    <p>
+      Using a text editor on your computer (such as <b>TextEdit</b>),
+      open the file <b>django/polls/tests.py</b> The tests for the
+      Polls application are in this file. Each set of tests are
+      implemented as classes, and each method in each class is an
+      individual test case. You are going to create a new test for
+      the <b>results</b> page, the page that you see after you vote
+      for a Choice. Your test should:
+    </p>
+    <ol>
+      <li>Create a question with two or more choices.</li>
+      <li>Verify that the results page for your new Question contains the correct vote count for all of the Choices.</li>
+    </ol>
+    <p>
+      Here are some helper functions that may be useful:
+      <ul>
+        <li>
+          <b>create_question(keyword_arguments)</b> - this function
+          will create and return a new Question. You can see how it is
+          used in other tests in <b>django/polls/tests.py</b>.
+        </li>
+        <li>
+          <b>question.choice_set.create(keyword_arguments)</b> - this function
+          will create and return a new Choice for the given <b>question</b>
+          object.
+        </li>
+        <li>
+          <b>self.client.get(url)</b> - this call when used in a test
+          method will return a response object corresponding to the
+          web page contents for the given <b>url</b>.
+        </li>
+        <li>
+          <b>reverse('polls:results', args=(question.id,))</b> - this will
+          return the URL for the <b>results</b> view in the <b>polls</b>
+          application for the given <b>question</b> object.
+        </li>
+        <li>
+          <b>self.assertContains(response, string, status_code=200)</b> -
+          this will check to see if the web page in the <b>response</b>
+          object contains the given <b>string</b> and that the web server
+          returned a status code of <b>200</b> (200 is the HTTP status
+          code for success).
+        </li>
+      </ul>
     </p>
   </li>
 
