@@ -8,6 +8,7 @@
       <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a> ({{ question.votes }} votes)</li>
     {% endfor %}
   </ul>
+  <a href="{% url 'polls:allresults' %}">see all results</a>
 {% else %}
   <p>No polls are available.</p>
 {% endif %}
