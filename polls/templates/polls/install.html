@@ -22,7 +22,7 @@
   <li>Shutdown and restart vagrant: <i>vagrant halt; vagrant up</i>
   <li>SSH into the vagrant instance: <i>vagrant ssh</i>
   <li>Restore the original code: <i>git fetch; git reset --hard origin/master</i></li>
-  <li>Push the initial code to heroku: <i>git push --force heroku init:master</i></li>
+  <li>Push the initial code to heroku: <i>git push --force heroku origin/init:master</i></li>
   <li>(if you have the heroku command) Restore the database from backup: <i>heroku pg:backups restore -a django-hoc-## --confirm django-hoc-## django-hoc::b004 DATABASE_URL</i>
 </ol>
 
