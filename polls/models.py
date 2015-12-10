@@ -39,14 +39,14 @@ class Question(models.Model):
             question1.choice_set.create(choice_text=choice_text, votes=0)
         return True
 
-    def choices_by_vote_count(self):
-        return self.choice_set.order_by('-votes')
-
-    def response_count(self):
+    def votes(self):
         sum = 0
         for choice in self.choice_set.all():
             sum += choice.votes
         return sum
+
+    def choices_by_vote_count(self):
+        return self.choice_set.order_by('-votes')
 
 class Choice(models.Model):
     question = models.ForeignKey(Question)

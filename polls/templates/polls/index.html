@@ -3,7 +3,7 @@
 {% if latest_question_list %}
   <ul>
     {% for question in latest_question_list %}
-      <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a> ({{ question.response_count }} responses)</li>
+      <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a> ({{ question.votes }} votes)</li>
     {% endfor %}
   </ul>
 {% else %}
