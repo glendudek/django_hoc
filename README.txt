@@ -1,34 +1,5 @@
 vagrant box add precise64 http://files.vagrantup.com/precise64.box
 
-install python3
-install pip
-  python3 get-pip.py
-install virtualenv
-  sudo pip3 install virtualenv
-
-https://devcenter.heroku.com/articles/getting-started-with-django
-
-venv/bin/activate
-
-foreman start
-
-# set up local postgresql database
-sudo su - postgres
-createdb django_hoc_db
-createuser -P djangodbm
-  fred
-psql
-  GRANT ALL PRIVILEGES ON DATABASE django_hoc_db to djangodbm;
-  ALTER USER djangodbm CREATEDB;
-
-echo 'DATABASE_URL="postgres://djangodbm:fred@localhost/django_hoc_db"' > .env
-
-pip install django-dotenv
-pip freeze > requirements.txt
-# add to manage.py
-  import dotenv
-  dotenv.read_dotenv()
-
 # Building vagrant environment
 sudo apt-get update
 sudo apt-get install postgresql libpq-dev
@@ -48,6 +19,10 @@ virtualenv ../vagrant-venv
 venv/bin/activate
 pip install django-toolbelt
 pip install django-dotenv
+# install heroku toolbelt
+wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
+# cache Heroku API token in ~/.netrc
+heroku pg:backups -a django-hoc
 
 # Build a vagrant box
 vagrant package default --output django_hoc.box
@@ -120,3 +95,33 @@ vagrant ssh
 # Copy and restart the application at heroku - respond "yes" to add heroku to the list of known hosts
 
 # At this point you can connect to the application at Heroku from any browser at django-hoc-##.herokuapp.com/polls
+
+# misc (obsolete?)
+install python3
+install pip
+  python3 get-pip.py
+install virtualenv
+  sudo pip3 install virtualenv
+
+https://devcenter.heroku.com/articles/getting-started-with-django
+
+venv/bin/activate
+
+foreman start
+
+# set up local postgresql database
+sudo su - postgres
+createdb django_hoc_db
+createuser -P djangodbm
+  fred
+psql
+  GRANT ALL PRIVILEGES ON DATABASE django_hoc_db to djangodbm;
+  ALTER USER djangodbm CREATEDB;
+
+echo 'DATABASE_URL="postgres://djangodbm:fred@localhost/django_hoc_db"' > .env
+
+pip install django-dotenv
+pip freeze > requirements.txt
+# add to manage.py
+  import dotenv
+  dotenv.read_dotenv()
