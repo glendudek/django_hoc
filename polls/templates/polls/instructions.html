@@ -479,14 +479,16 @@ each question.
       Here are some helper functions that may be useful:
       <ul>
         <li>
-          <b>create_question(keyword_arguments)</b> - this function
-          will create and return a new Question. You can see how it is
+          <b>create_question(question_text='question string', days=#)</b> - this function
+          will create and return a new Question with the specified
+          question_text string and days (from now) that the question
+          should be displayed. You can see how it is
           used in other tests in <b>django/polls/tests.py</b>.
         </li>
         <li>
-          <b>question.choice_set.create(keyword_arguments)</b> - this function
+          <b>question.choice_set.create(choice_text='choice string', votes=#)</b> - this function
           will create and return a new Choice for the given <b>question</b>
-          object.
+          object with the specified choice_text string and number of votes.
         </li>
         <li>
           <b>self.client.get(url)</b> - this call when used in a test
