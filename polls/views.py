@@ -16,8 +16,11 @@ def instructions(request):
 def install(request):
     return render(request, 'polls/install.html')
 
-def index(request):
+def init(request):
     Question.init_questions()
+    return render(request, 'polls/init.html')
+
+def index(request):
     latest_question_list = Question.objects.filter(
         pub_date__lte=timezone.now()
     ).order_by('-pub_date')[:5]

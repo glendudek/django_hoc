@@ -19,19 +19,14 @@ class Question(models.Model):
 
     @classmethod
     def init_questions(cls):
-        question_list = Question.objects.all()
-        if len(question_list) != 1:
-            return False
-        question = question_list[0]
-        if question.question_text != "What's up?":
-            return False
+        # Remove all choices and questions
         for question in Question.objects.all():
             for choice in question.choice_set.all():
                 choice.delete()
             question.delete()
-        question2 = Question.objects.create(question_text="Who is your favorite Avenger?",
+        question2 = Question.objects.create(question_text="Who is your favorite Star Wars character?",
                                             pub_date=timezone.now())
-        for choice_text in ['Black Widow', 'Captain America', 'Iron Man', 'The Hulk', 'Thor']:
+        for choice_text in ['BB-8', 'C3PO', 'Finn', 'Han Solo', 'Kylo Ren', 'Leia Organa', 'Luke Skywalker', 'R2D2', 'Rey']:
             question2.choice_set.create(choice_text=choice_text, votes=0)
         question1 = Question.objects.create(question_text="What is your favorite cuisine?",
                                             pub_date=timezone.now())
