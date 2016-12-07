@@ -1,6 +1,7 @@
 vagrant box add minimal/trusty64
 vagrant init minimal/trusty64
-  add 'config.ssh.insert_key = false' to Vagrantfile
+  # Update Vagrantfile with:
+  config.ssh.insert_key = false' to Vagrantfile
 
 # Building vagrant environment
 sudo apt-get update
@@ -16,7 +17,7 @@ sudo su - postgres
     \q
   exit
 cd /vagrant
-sudo apt-get install python3-dev
+sudo apt-get install git python3-dev
 curl https://bootstrap.pypa.io/get-pip.py | sudo python3
 sudo pip3 install virtualenv
 virtualenv -p python3 ~/vagrant-venv
@@ -38,11 +39,11 @@ python manage.py createsuperuser
 exit
 
 # Build a vagrant box
-vagrant package default --output django_hoc.box
+vagrant package default --output django_hoc_trusty64.box
 
 # Update Vagrantfile with:
-# config.vm.network "forwarded_port", guest: 8000, host: 8000
-# config.vm.box = "django_hoc"
+  config.vm.network "forwarded_port", guest: 8000, host: 8000
+  config.vm.box = "django_hoc"
 
 # create new app
 mkdir -p django-hoc-$i; (cd django-hoc-$i; git init; heroku apps:create django-hoc-$i; heroku sharing:add dudek@pobox.com; heroku addons:add heroku-postgresql:hobby-dev; heroku pg:wait; heroku addons:add pgbackups; heroku pgbackups:restore --confirm django-hoc-$i DATABASE http://django-hoc-00.herokuapp.com/static/django_hoc_db.dump)
