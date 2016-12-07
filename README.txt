@@ -1,5 +1,6 @@
-vagrant box add ubuntu/xenial64
-vagrant init ubuntu/xenial64
+vagrant box add minimal/trusty64
+vagrant init minimal/trusty64
+  add 'config.ssh.insert_key = false' to Vagrantfile
 
 # Building vagrant environment
 sudo apt-get update
@@ -18,19 +19,15 @@ cd /vagrant
 sudo apt-get install python3-dev
 curl https://bootstrap.pypa.io/get-pip.py | sudo python3
 sudo pip3 install virtualenv
-virtualenv ~/vagrant-venv
+virtualenv -p python3 ~/vagrant-venv
 source ~/vagrant-venv/bin/activate
 sudo apt-get install gcc
-pip install django-toolbelt
-pip install django-dotenv
+pip3 install django-toolbelt
+pip3 install django-dotenv
 cat vagrant-user/.bashrc_append >> ~/.bashrc
 cp vagrant-user/.bash_hoc ~/.
 cp -pr vagrant-user/.ssh ~/.
 chmod go-rwx ~/.ssh ~/.ssh/id_rsa
-# install heroku toolbelt
-wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-# cache Heroku API token in ~/.netrc
-heroku pg:backups -a django-hoc
 # create database schema
 python manage.py migrate
 # create admin user
@@ -129,8 +126,8 @@ psql
 
 echo 'DATABASE_URL="postgres://djangodbm:fred@localhost/django_hoc_db"' > .env
 
-pip install django-dotenv
-pip freeze > requirements.txt
+pip3 install django-dotenv
+pip3 freeze > requirements.txt
 # add to manage.py
   import dotenv
   dotenv.read_dotenv()
