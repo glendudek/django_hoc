@@ -15,7 +15,6 @@ sudo su - postgres
     \q
   exit
 cd /vagrant
-sudo -u postgres pg_restore --verbose --clean --no-acl --no-owner -d django_hoc_db db/django-hoc-b004.dump
 sudo apt-get install python3-dev
 curl https://bootstrap.pypa.io/get-pip.py | sudo python3
 sudo pip3 install virtualenv
