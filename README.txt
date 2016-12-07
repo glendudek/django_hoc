@@ -31,8 +31,14 @@ chmod go-rwx ~/.ssh ~/.ssh/id_rsa
 wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 # cache Heroku API token in ~/.netrc
 heroku pg:backups -a django-hoc
-
+# create database schema
 python manage.py migrate
+# create admin user
+python manage.py createsuperuser
+  admin
+  admin@example.com
+  allpowerful
+exit
 
 # Build a vagrant box
 vagrant package default --output django_hoc.box
