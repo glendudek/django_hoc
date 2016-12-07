@@ -1,2 +1,2 @@
 cd /vagrant
-source ../vagrant-venv/bin/activate
+source ~/vagrant-venv/bin/activate
