@@ -1,9 +1,10 @@
-vagrant box add precise64 http://files.vagrantup.com/precise64.box
+vagrant box add ubuntu/xenial64
+vagrant init ubuntu/xenial64
 
 # Building vagrant environment
 sudo apt-get update
+sudo apt-get upgrade
 sudo apt-get install postgresql libpq-dev
-sudo apt-get install git
 sudo su - postgres
   createdb django_hoc_db
   createuser -P djangodbm
@@ -11,32 +12,35 @@ sudo su - postgres
   psql
     GRANT ALL PRIVILEGES ON DATABASE django_hoc_db to djangodbm;
     ALTER USER djangodbm CREATEDB;
-sudo -u postgres pg_restore --verbose --clean --no-acl --no-owner -d django_hoc_db db/django_hoc_db.dump
-sudo apt-get install python3 python3-dev
-sudo python3 ./get-pip.py
+    \q
+  exit
+cd /vagrant
+sudo -u postgres pg_restore --verbose --clean --no-acl --no-owner -d django_hoc_db db/django-hoc-b004.dump
+sudo apt-get install python3-dev
+curl https://bootstrap.pypa.io/get-pip.py | sudo python3
 sudo pip3 install virtualenv
-virtualenv ../vagrant-venv
-venv/bin/activate
+virtualenv ~/vagrant-venv
+source ~/vagrant-venv/bin/activate
+sudo apt-get install gcc
 pip install django-toolbelt
 pip install django-dotenv
+cat vagrant-user/.bashrc_append >> ~/.bashrc
+cp vagrant-user/.bash_hoc ~/.
+cp -pr vagrant-user/.ssh ~/.
+chmod go-rwx ~/.ssh ~/.ssh/id_rsa
 # install heroku toolbelt
 wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 # cache Heroku API token in ~/.netrc
 heroku pg:backups -a django-hoc
 
+python manage.py migrate
+
 # Build a vagrant box
 vagrant package default --output django_hoc.box
 
-# Building new environment on mac
-install virtualbox
-install vagrant
-vagrant box add django_hoc ./django_hoc.box
-git clone git@github.com:glendudek/django_hoc.git django_hoc
-cd django_hoc
-git remote add heroku git@heroku.com:django-hoc-00.git
-vagrant up
-vagrant ssh
-./runserver
+# Update Vagrantfile with:
+# config.vm.network "forwarded_port", guest: 8000, host: 8000
+# config.vm.box = "django_hoc"
 
 # create new app
 mkdir -p django-hoc-$i; (cd django-hoc-$i; git init; heroku apps:create django-hoc-$i; heroku sharing:add dudek@pobox.com; heroku addons:add heroku-postgresql:hobby-dev; heroku pg:wait; heroku addons:add pgbackups; heroku pgbackups:restore --confirm django-hoc-$i DATABASE http://django-hoc-00.herokuapp.com/static/django_hoc_db.dump)

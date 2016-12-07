@@ -9,6 +9,8 @@ urlpatterns = [
     url(r'^instructions$', views.instructions, name='instructions'),
     # ex: /polls/install/
     url(r'^install$', views.install, name='install'),
+    # ex: /polls/init/
+    url(r'^init$', views.init, name='init'),
     # ex: /polls/
     url(r'^$', views.index, name='index'),
     # ex: /polls/5/

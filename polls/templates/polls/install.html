@@ -4,7 +4,7 @@
 <h1>Installation Instructions</h1>
 
 <ol>
-  <li>Install VirtualBox 4.3. You can download it here: <a href="https://www.virtualbox.org/wiki/Download_Old_Builds_4_3">VirtualBox 4.3 Download Page</a></li>
+  <li>Install VirtualBox 5.0. You can download it here: <a href="https://www.virtualbox.org/wiki/Download_Old_Builds_5_0">VirtualBox 5.0 Download Page</a></li>
   <li>Install Vagrant. You can download it here: <a href="https://www.vagrantup.com/downloads.html">Vagrant Download Page</a></li>
   <li>Download the vagrant box django_hoc.box from here (warning: it is over 500MB!): <a href="https://www.dropbox.com/s/6kcoaadnz3s45zs/django_hoc.box?dl=0">django_hoc.box</a></li>
   <li>Import the vagrant box for django_hoc into vagrant: <i>vagrant box add django_hoc ./django_hoc.box</i></li>
@@ -23,7 +23,19 @@
   <li>SSH into the vagrant instance: <i>vagrant ssh</i>
   <li>Restore the original code: <i>git fetch; git reset --hard origin/master</i></li>
   <li>Push the initial code to heroku: <i>git push --force heroku origin/init:master</i></li>
-  <li>(if you have the heroku command) Restore the database from backup: <i>heroku pg:backups restore -a django-hoc-## --confirm django-hoc-## django-hoc::b004 DATABASE_URL</i>
+  <li>Reinitialize the local database:
+    <ul>
+      <li>start the local application: <i>./runserver</i></li>
+      <li>use a local browser to bring up the home page at localhost:8000</li>
+      <li>click on the link to reinitialize the database</li>
+    </ul>
+  </li>
+  <li>Reinitialize the database at heroku:</li>
+    <ul>
+      <li>use a browser to bring up the home page at <i>http://django-hoc-##.herokuapp.com</i>, where <i>##</i> is the assigned number of the computer</li>
+      <li>click on the link to reinitialize the database</li>
+    </ul>
+  </li>
 </ol>
 
 <ol>

@@ -1,0 +1,4 @@
+
+if [ -f ~/.bash_hoc ]; then
+  . ~/.bash_hoc
+fi
