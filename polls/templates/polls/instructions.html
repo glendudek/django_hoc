@@ -107,10 +107,10 @@ about Django and use it for designing and writing your own web applications.
   <li>
     <b>View</b> - A View describes the interface, how the data is displayed
     by the web application.
-    For example, in the survey application there are N views:
+    For example, our application is a polling website, with multiple-choice questions. In this application there are 3 primary views:
     <ol>
     <li>Index: lists all of the Questions that are available.
-    <li>Details: shows you all the Choices for a specific Question.
+    <li>Detail: shows you all the Choices for a specific Question.
     <li>Results: shows you the number of votes for all the choices of
     a specific question.
     </ol>
@@ -124,7 +124,7 @@ about Django and use it for designing and writing your own web applications.
     For example, a controller can accept a vote
     for a Choice from the <b>details</b> view, instruct the Choice
     model to increment the number of votes, and display (or
-    <b>renders</b>) the <b>results</b> view to show the new vote counts
+    <b>render</b>) the <b>results</b> view to show the new vote counts
     for the particular Question.
   </li>
   <br/>
@@ -295,7 +295,7 @@ each question.
       <i>http://localhost:8000</i>), and click
       on the link to go to the admin interface. You should see a login screen
       asking for a Username and Password. Use <i>admin</i> as the Username
-      and <i>fred</i> as the password. You should now see a page with
+      and <i>allpowerful</i> as the password. You should now see a page with
       the title <b>Django administration</b> and subtitle
       <b>Site administration</b>.
     </p>
@@ -364,7 +364,7 @@ each question.
       tags to <b>pre-process</b> the template before it is sent to the
       browser, and convert it to plain HTML for the browser.  These
       Django tags allow you to generate HTML using the data and
-      control control logic in Python/Django.
+      control logic in Python/Django.
     </p>
     <p>
       The simplest Django tags just take a Python value that is inside
