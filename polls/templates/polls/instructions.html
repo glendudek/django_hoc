@@ -325,11 +325,12 @@ each question.
       Ok, now let's make some changes to a Model and to a View. Right now,
       the <b>index</b> view (the first page in the Polls application) just
       shows a list of questions. I'd like you to modify it to show the total
-      number of responses received for each question. Using a text editor on
-      your computer (such as <b>TextEdit</b>), open the file <b>django/polls/models.py</b>.
+      number of responses received for each question. Use the command
+      <i>nano django/polls/models.py</i> to edit the models file
+      (<b>do not use</b> <i>TextEdit</i>, it will not save the file correctly!).
     </p>
     <p>
-      Whichever you use <b>IT IS VERY IMPORTANT TO USE SPACES TO INDENT YOUR PYTHON CODE, AND NOT TABS</b>
+      <b>IT IS VERY IMPORTANT TO USE SPACES TO INDENT YOUR PYTHON CODE, AND NOT TABS</b>
     </p>
     <p>
       First, add a method called votes(self) to the Question class to return
@@ -347,9 +348,11 @@ each question.
       </ul>
     </p>
     <p>
-      Next, let's modify the index template file
-      <b>django/polls/templates/polls/index.html</b> to add the total number
-      of responses next to each question. The template file is a mixture of
+      Next, let's modify the index template file using the command
+      <i>nano django/polls/templates/polls/index.html</i> to add the
+      total number of responses next to each question
+      (<b>do not use</b> <i>TextEdit</i>, it will not save the file correctly!).
+      The template file is a mixture of
       HTML tags which are typically surrounded by <b>&lt; &gt;</b>, which you
       may have seen before. HTML is the format that your browser understands,
       and tells the browser what information to put where on the page,
@@ -468,8 +471,8 @@ each question.
       about affecting your regular database.
     </p>
     <p>
-      Using a text editor on your computer (such as <b>TextEdit</b>),
-      open the file <b>django/polls/tests.py</b> The tests for the
+      Edit the tests file using the command <i>nano django/polls/tests.py</i>.
+      The tests for the
       Polls application are in this file. Each set of tests are
       implemented as classes, and each method in each class is an
       individual test case. You are going to create a new test for
